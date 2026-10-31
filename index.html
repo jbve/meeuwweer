@@ -98,7 +98,9 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
 .notes .none { margin: 0; color: var(--muted); }
 @media (max-width: 560px) { .verdict { grid-template-columns: 1fr; } }
 
-.sources { font-size: 13px; color: var(--muted); font-style: italic; max-width: 90ch; margin: 0; }
+.sources { font-size: 13px; color: var(--muted); font-style: italic; max-width: 90ch; margin: 6px 0 0; }
+.srcbox summary { cursor: pointer; font-size: 13px; color: var(--muted); font-family: var(--font-display); font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+.srcbox summary:hover, .srcbox summary:focus-visible { color: var(--accent); }
 
 .history h2 { font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing: .04em; text-transform: uppercase; margin: 0 0 8px; }
 .history ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
@@ -297,7 +299,7 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
       cards,
       verdicts,
       bijz,
-      d.bronnen ? el("p", { class: "sources", text: d.bronnen }) : null
+      d.bronnen ? el("details", { class: "srcbox" }, [el("summary", { text: "Bronnen en runtijden" }), el("p", { class: "sources", text: d.bronnen })]) : null
     ]));
 
     historyList(b.id);
