@@ -240,6 +240,8 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
     const soort = d.update === "ochtend" ? "Ochtendupdate" : d.update === "middag" ? "Middagupdate" : "Avondbriefing";
     facts.appendChild(el("span", {}, [soort + " ", el("b", { text: tijd || "–" })]));
     facts.appendChild(el("span", {}, ["Zon ", el("b", { text: (d.zonOp || "?") + "–" + (d.zonOnder || "?") })]));
+    if (d.update !== "ochtend" && d.update !== "middag") facts.appendChild(el("span", {}, ["Volgende update ", el("b", { text: (d.dag ? d.dag.split(" ")[0] + " " : "") + "± 08:15" })]));
+    else facts.appendChild(el("span", {}, [el("b", { text: "Laatste update" })]));
     if (d.baan) facts.appendChild(el("span", { class: "rwy", text: "RWY " + d.baan }));
 
     const blokken = Array.isArray(d.blokken) ? d.blokken : [];
