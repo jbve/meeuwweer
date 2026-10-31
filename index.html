@@ -106,6 +106,23 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
 .history button[aria-current="true"] { border-color: var(--accent); color: var(--accent); font-weight: 500; }
 .history button:focus-visible, .history button:hover { outline: 2px solid var(--accent); outline-offset: 1px; }
 
+.outlook { display: grid; gap: 10px; }
+.outlook-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; }
+.outlook-head h2 { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing: .04em; text-transform: uppercase; }
+.outlook-head small { font-size: 13px; color: var(--muted); }
+.ocards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.ocard { padding: 14px; display: grid; gap: 8px; align-content: start; border-top: 4px solid var(--line); }
+.ocard.groen { border-top-color: var(--green); }
+.ocard.oranje { border-top-color: var(--amber); }
+.ocard.rood { border-top-color: var(--red); }
+.ocard-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.ocard-head strong { font-family: var(--font-display); font-weight: 700; font-size: 20px; letter-spacing: .02em; }
+.ocard p { margin: 0; font-size: 15px; }
+.ocard dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 12px; margin: 0; font-size: 14px; }
+.ocard dt { font-family: var(--font-display); font-weight: 600; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding-top: 1px; }
+.ocard dd { margin: 0; min-width: 0; }
+.zeker { font-family: var(--font-data); font-size: 12px; color: var(--muted); }
+
 .state { padding: 28px 20px; text-align: center; color: var(--muted); }
 .state strong { display: block; color: var(--fg); font-family: var(--font-display); font-size: 22px; letter-spacing: .02em; margin-bottom: 4px; }
 .note { font-size: 13px; color: var(--amber); }
@@ -123,6 +140,14 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
   <div id="main">
     <div class="panel state"><strong>Briefing wordt geladen</strong>De briefing verschijnt de avond voor elke vliegdag rond 18:35, met een update op de vliegdag zelf rond 08:15.</div>
   </div>
+
+  <section class="outlook" id="outlook" hidden>
+    <div class="outlook-head">
+      <h2>Vooruitzicht volgende vliegdagen</h2>
+      <small id="outlookNote"></small>
+    </div>
+    <div class="ocards" id="outlookCards"></div>
+  </section>
 
   <p class="note" id="note" hidden></p>
 
@@ -260,6 +285,46 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
     $("history").hidden = briefings.length < 2;
   }
 
+  const OLABEL = { groen: "Kansrijk", oranje: "Twijfel", rood: "Slecht" };
+  const OROWS = [["wind", "Wind"], ["baan", "Baan"], ["neerslag", "Neerslag"], ["bewolking", "Bewolking"], ["thermiek", "Thermiek"]];
+
+  function renderOutlook(json) {
+    const dagen = Array.isArray(json && json.dagen) ? json.dagen : [];
+    const vandaag = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Brussels" });
+    const metBriefing = new Set(briefings.map((b) => b.id));
+    const toon = dagen
+      .filter((x) => x && x.datum && x.datum >= vandaag && !metBriefing.has(x.datum))
+      .sort((a, b) => (a.datum < b.datum ? -1 : 1));
+    const box = $("outlookCards");
+    box.textContent = "";
+    if (!toon.length) { $("outlook").hidden = true; return; }
+    toon.forEach((x) => {
+      const k = ["rood", "oranje", "groen"].includes(x.kleur) ? x.kleur : "oranje";
+      const dag = x.dag || x.datum;
+      box.appendChild(el("div", { class: "panel ocard " + k }, [
+        el("div", { class: "ocard-head" }, [
+          el("strong", { text: dag.charAt(0).toUpperCase() + dag.slice(1) }),
+          el("span", { class: "light " + k, text: OLABEL[k] })
+        ]),
+        x.zekerheid ? el("span", { class: "zeker", text: "Zekerheid: " + x.zekerheid }) : null,
+        x.tekst ? el("p", { text: x.tekst }) : null,
+        el("dl", {}, OROWS.filter((r) => x[r[0]]).flatMap((r) => [el("dt", { text: r[1] }), el("dd", { text: x[r[0]] })]))
+      ]));
+    });
+    let tijd = "";
+    try { if (json.gemaakt) tijd = new Date(json.gemaakt).toLocaleString("nl-BE", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Brussels" }); } catch (e) {}
+    $("outlookNote").textContent = "Grove verwachting voor de komende vliegdagen" + (tijd ? " · gemaakt " + tijd : "") + ". De volledige briefing volgt de avond ervoor.";
+    $("outlook").hidden = false;
+  }
+
+  async function loadOutlook() {
+    try {
+      const res = await fetch("vooruitzicht.json", { cache: "no-store" });
+      if (!res.ok) return;
+      renderOutlook(await res.json());
+    } catch (e) {}
+  }
+
   async function start() {
     try {
       const res = await fetch("briefings.json", { cache: "no-store" });
@@ -272,6 +337,7 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
         .slice(0, 10)
         .map((b) => ({ id: b.datum, data: b }));
       render();
+      loadOutlook();
     } catch (e) {
       $("main").textContent = "";
       $("main").appendChild(el("div", { class: "panel state" }, [el("strong", { text: "Briefing niet geladen" }), "Herlaad de pagina. Lukt het dan nog niet, probeer het later opnieuw."]));
