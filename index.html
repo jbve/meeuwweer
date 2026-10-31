@@ -194,17 +194,40 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
     ["xwind", "Baan · X-wind kt"], ["regen", "Regen"], ["thermiek", "Thermiek (netto)"]
   ];
 
+  // Standaard: briefing van vandaag; vanaf 18 u die van morgen als die er al is. Oude briefings alleen via "Vorige briefings".
+  function huidige() {
+    const nu = new Date();
+    const vandaag = nu.toLocaleDateString("sv-SE", { timeZone: "Europe/Brussels" });
+    const uur = Number(nu.toLocaleString("en-GB", { hour: "2-digit", hour12: false, timeZone: "Europe/Brussels" }));
+    const komend = briefings.filter((x) => x.id >= vandaag).sort((a, b) => (a.id < b.id ? -1 : 1));
+    if (!komend.length) return null;
+    if (komend[0].id === vandaag && uur >= 18 && komend[1]) return komend[1];
+    return komend[0];
+  }
+
+  function historyList(actief) {
+    const list = $("historyList");
+    list.textContent = "";
+    briefings.forEach((x) => {
+      const btn = el("button", { type: "button", "aria-current": String(x.id === actief), text: x.data.dag || x.id });
+      btn.addEventListener("click", () => { selected = x.id; render(); });
+      list.appendChild(el("li", {}, [btn]));
+    });
+  }
+
   function render() {
-    const b = briefings.find((x) => x.id === selected) || briefings[0];
+    const b = selected ? briefings.find((x) => x.id === selected) : huidige();
     const main = $("main");
     main.textContent = "";
     if (!b) {
       $("facts").textContent = "";
+      $("title").textContent = "Meeuw Weerbriefing";
       main.appendChild(el("div", { class: "panel state" }, [
-        el("strong", { text: "Nog geen briefing" }),
-        "De briefing verschijnt de avond voor elke vliegdag rond 18:35."
+        el("strong", { text: "Geen briefing voor vandaag" }),
+        "De volgende briefing verschijnt de avond voor de volgende vliegdag rond 18:35."
       ]));
-      $("history").hidden = true;
+      historyList(null);
+      $("history").hidden = briefings.length < 1;
       return;
     }
     const d = b.data;
@@ -275,13 +298,7 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
       d.bronnen ? el("p", { class: "sources", text: d.bronnen }) : null
     ]));
 
-    const list = $("historyList");
-    list.textContent = "";
-    briefings.forEach((x) => {
-      const btn = el("button", { type: "button", "aria-current": String(x.id === b.id), text: x.data.dag || x.id });
-      btn.addEventListener("click", () => { selected = x.id; render(); });
-      list.appendChild(el("li", {}, [btn]));
-    });
+    historyList(b.id);
     $("history").hidden = briefings.length < 2;
   }
 
