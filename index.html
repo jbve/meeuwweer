@@ -1,0 +1,285 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Meeuw Weerbriefing</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one airfield briefing board — date strip, block table (cards on phones), three verdict lines, history list. */
+:root {
+  --bg: #eef1f3;
+  --surface: #ffffff;
+  --fg: #17212b;
+  --muted: #5b6875;
+  --line: #d3dae0;
+  --accent: #1f5f8b;
+  --red: #c62f2f;      --red-bg: #fbe7e6;
+  --amber: #b86a00;    --amber-bg: #fdf0db;
+  --green: #22803f;    --green-bg: #e3f3e7;
+  --font-display: "Barlow Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-data: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11171d; --surface: #19222b; --fg: #e5ebf0; --muted: #93a1ae; --line: #2c3946; --accent: #7fb6e0;
+    --red: #ff7b72; --red-bg: #3a1d1d; --amber: #f2b45a; --amber-bg: #3a2c14; --green: #6fd38c; --green-bg: #173323;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #11171d; --surface: #19222b; --fg: #e5ebf0; --muted: #93a1ae; --line: #2c3946; --accent: #7fb6e0;
+  --red: #ff7b72; --red-bg: #3a1d1d; --amber: #f2b45a; --amber-bg: #3a2c14; --green: #6fd38c; --green-bg: #173323;
+  color-scheme: dark;
+}
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 16px; line-height: 1.5; }
+.wrap { max-width: 1040px; margin: 0 auto; padding-block: 24px 48px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); display: grid; gap: 20px; }
+
+header { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 8px 24px; border-bottom: 3px solid var(--fg); padding-bottom: 12px; }
+.eyebrow { font-family: var(--font-data); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 6vw, 46px); line-height: 1; margin: 4px 0 0; letter-spacing: .01em; text-wrap: balance; }
+.facts { display: flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--font-data); font-size: 14px; }
+.facts b { font-weight: 500; color: var(--fg); }
+.facts span { color: var(--muted); }
+.rwy { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-display); font-weight: 700; font-size: 22px; padding: 2px 10px; border: 2px solid var(--fg); border-radius: 3px; letter-spacing: .04em; }
+
+.panel { background: var(--surface); border: 1px solid var(--line); border-radius: 6px; }
+.tablewrap { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
+th { font-family: var(--font-display); font-weight: 600; font-size: 14px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); text-align: left; padding: 12px 12px 8px; border-bottom: 1px solid var(--line); white-space: nowrap; }
+td { padding: 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
+tr:last-child td { border-bottom: 0; }
+td.blok { font-family: var(--font-data); font-weight: 500; white-space: nowrap; }
+td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; white-space: nowrap; font-size: 14px; }
+
+.light { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-display); font-weight: 700; font-size: 15px; letter-spacing: .05em; text-transform: uppercase; padding: 3px 10px 3px 8px; border-radius: 999px; white-space: nowrap; }
+.light::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: currentColor; }
+.light.rood { color: var(--red); background: var(--red-bg); }
+.light.oranje { color: var(--amber); background: var(--amber-bg); }
+.light.groen { color: var(--green); background: var(--green-bg); }
+.change { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; }
+.change small { font-family: var(--font-data); font-size: 12px; color: var(--muted); }
+
+.cards { display: none; }
+@media (max-width: 720px) {
+  .tablewrap { display: none; }
+  .cards { display: grid; gap: 12px; }
+  .card { padding: 14px; display: grid; gap: 10px; }
+  .card-head { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+  .card-head .blok { font-family: var(--font-data); font-weight: 500; font-size: 16px; }
+  .card dl { display: grid; grid-template-columns: max-content 1fr; gap: 6px 14px; margin: 0; font-size: 15px; }
+  .card dt { font-family: var(--font-display); font-weight: 600; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding-top: 2px; }
+  .card dd { margin: 0; min-width: 0; }
+}
+
+.verdicts { display: grid; gap: 0; }
+.verdict { display: grid; grid-template-columns: 120px 1fr; gap: 6px 16px; padding: 14px 16px; border-bottom: 1px solid var(--line); }
+.verdict:last-child { border-bottom: 0; }
+.verdict h2 { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing: .04em; text-transform: uppercase; display: flex; align-items: center; gap: 8px; }
+.verdict p { margin: 0; max-width: 70ch; }
+.lead { border-left: 4px solid var(--accent); }
+.lead .verdict:last-child p { font-size: 18px; font-weight: 600; line-height: 1.45; }
+.ol { display: grid; gap: 10px; min-width: 0; }
+.ol p { margin: 0; max-width: 70ch; }
+.oldl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; margin: 0; font-size: 15px; }
+.oldl dt { font-family: var(--font-display); font-weight: 600; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding-top: 2px; }
+.oldl dd { margin: 0; min-width: 0; }
+.notes { padding: 14px 16px; display: grid; gap: 8px; }
+.notes.has { border-left: 4px solid var(--amber); background: var(--amber-bg); }
+.notes h2 { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing: .04em; text-transform: uppercase; }
+.notes ul { margin: 0; padding-left: 20px; display: grid; gap: 4px; max-width: 75ch; }
+.notes .none { margin: 0; color: var(--muted); }
+@media (max-width: 560px) { .verdict { grid-template-columns: 1fr; } }
+
+.sources { font-size: 13px; color: var(--muted); font-style: italic; max-width: 90ch; margin: 0; }
+
+.history h2 { font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing: .04em; text-transform: uppercase; margin: 0 0 8px; }
+.history ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.history button { font: inherit; font-family: var(--font-data); font-size: 13px; padding: 6px 10px; border-radius: 4px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); cursor: pointer; }
+.history button[aria-current="true"] { border-color: var(--accent); color: var(--accent); font-weight: 500; }
+.history button:focus-visible, .history button:hover { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.state { padding: 28px 20px; text-align: center; color: var(--muted); }
+.state strong { display: block; color: var(--fg); font-family: var(--font-display); font-size: 22px; letter-spacing: .02em; margin-bottom: 4px; }
+.note { font-size: 13px; color: var(--amber); }
+</style>
+
+<div class="wrap">
+  <header>
+    <div>
+      <div class="eyebrow">Meeuw Weerbriefing · Zoersel-Oostmalle · EBZR · baan 05/23</div>
+      <h1 id="title">Meeuw Weerbriefing</h1>
+    </div>
+    <div class="facts" id="facts"></div>
+  </header>
+
+  <div id="main">
+    <div class="panel state"><strong>Briefing wordt geladen</strong>De briefing verschijnt de avond voor elke vliegdag rond 18:35, met een update op de vliegdag zelf rond 08:15.</div>
+  </div>
+
+  <p class="note" id="note" hidden></p>
+
+  <section class="history" id="history" hidden>
+    <h2>Vorige briefings</h2>
+    <ul id="historyList"></ul>
+  </section>
+</div>
+
+<script>
+(function () {
+  const $ = (id) => document.getElementById(id);
+  const LABEL = { rood: "Nee", oranje: "Marginaal", groen: "Ja" };
+  let briefings = [];
+  let selected = null;
+
+  function el(tag, attrs, children) {
+    const n = document.createElement(tag);
+    if (attrs) for (const k in attrs) {
+      if (k === "class") n.className = attrs[k];
+      else if (k === "text") n.textContent = attrs[k];
+      else n.setAttribute(k, attrs[k]);
+    }
+    (children || []).forEach((c) => c && n.appendChild(typeof c === "string" ? document.createTextNode(c) : c));
+    return n;
+  }
+  function light(kleur) {
+    const k = ["rood", "oranje", "groen"].includes(kleur) ? kleur : "oranje";
+    return el("span", { class: "light " + k, text: LABEL[k] });
+  }
+  function sleepCell(s) {
+    if (!s) return el("span", { text: "–" });
+    if (typeof s === "string") return light(s);
+    const wrap = el("span", { class: "change" }, [light(s.van)]);
+    if (s.naar) {
+      wrap.appendChild(el("small", { text: "→" }));
+      wrap.appendChild(light(s.naar));
+      if (s.om) wrap.appendChild(el("small", { text: "vanaf " + s.om }));
+    }
+    return wrap;
+  }
+  const COLS = [
+    ["basis", "Basis"], ["zicht", "Zicht"], ["wind", "Wind (vlagen) kt"],
+    ["xwind", "Baan · X-wind kt"], ["regen", "Regen"], ["thermiek", "Thermiek (netto)"]
+  ];
+
+  function render() {
+    const b = briefings.find((x) => x.id === selected) || briefings[0];
+    const main = $("main");
+    main.textContent = "";
+    if (!b) {
+      $("facts").textContent = "";
+      main.appendChild(el("div", { class: "panel state" }, [
+        el("strong", { text: "Nog geen briefing" }),
+        "De briefing verschijnt de avond voor elke vliegdag rond 18:35."
+      ]));
+      $("history").hidden = true;
+      return;
+    }
+    const d = b.data;
+    const dag = d.dag || d.datum || "";
+    $("title").textContent = dag ? dag.charAt(0).toUpperCase() + dag.slice(1) : "Meeuw Weerbriefing";
+    const facts = $("facts");
+    facts.textContent = "";
+    let tijd = "";
+    try { if (d.gemaakt) tijd = new Date(d.gemaakt).toLocaleString("nl-BE", { weekday: "short", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Brussels" }); } catch (e) {}
+    const soort = d.update === "ochtend" ? "Ochtendupdate" : d.update === "middag" ? "Middagupdate" : "Avondbriefing";
+    facts.appendChild(el("span", {}, [soort + " ", el("b", { text: tijd || "–" })]));
+    facts.appendChild(el("span", {}, ["Zon ", el("b", { text: (d.zonOp || "?") + "–" + (d.zonOnder || "?") })]));
+    if (d.baan) facts.appendChild(el("span", { class: "rwy", text: "RWY " + d.baan }));
+
+    const blokken = Array.isArray(d.blokken) ? d.blokken : [];
+    const table = el("table", {}, [
+      el("thead", {}, [el("tr", {}, [el("th", { text: "Blok" })].concat(COLS.map((c) => el("th", { text: c[1] }))).concat([el("th", { text: "Zweefvliegweer" })]))]),
+      el("tbody", {}, blokken.map((r) => el("tr", {}, [el("td", { class: "blok", text: r.blok || "" })]
+        .concat(COLS.map((c) => el("td", { class: ["wind", "xwind"].includes(c[0]) ? "num" : "", text: r[c[0]] || "–" })))
+        .concat([el("td", {}, [sleepCell(r.sleep)])]))))
+    ]);
+    const cards = el("div", { class: "cards" }, blokken.map((r) => el("div", { class: "panel card" }, [
+      el("div", { class: "card-head" }, [el("span", { class: "blok", text: r.blok || "" }), sleepCell(r.sleep)]),
+      el("dl", {}, COLS.flatMap((c) => [el("dt", { text: c[1] }), el("dd", { text: r[c[0]] || "–" })]))
+    ])));
+
+    const v = (titel, kleur, tekst) => el("div", { class: "verdict" }, [
+      el("h2", {}, [titel, kleur ? light(kleur) : null]),
+      el("p", { text: tekst || "–" })
+    ]);
+    const top = el("div", { class: "panel verdicts lead" }, [
+      d.synoptisch ? v("Weerbeeld", null, d.synoptisch) : null,
+      v("Kort", null, d.kort)
+    ]);
+    const o = d.overland || {};
+    const OL = [
+      ["venster", "Thermiek van–tot"], ["netto", "Sterkte (netto)"], ["werkhoogte", "Werkhoogte"],
+      ["type", "Blauw of cumulus"], ["uitspreiding", "Uitspreiding"], ["buien", "Buien / onweer"],
+      ["bovenbewolking", "Bovenbewolking"], ["windHoogte", "Wind op hoogte"]
+    ].filter((f) => o[f[0]] && o.kleur !== "rood");
+    const overlandBlock = el("div", { class: "verdict" }, [
+      el("h2", {}, ["Overland", o.kleur ? light(o.kleur) : null]),
+      el("div", { class: "ol" }, [
+        el("p", { text: o.tekst || "–" }),
+        OL.length ? el("dl", { class: "oldl" }, OL.flatMap((f) => [el("dt", { text: f[1] }), el("dd", { text: o[f[0]] })])) : null
+      ])
+    ]);
+    const verdicts = el("div", { class: "panel verdicts" }, [
+      v("Modellen", null, d.modellen),
+      overlandBlock
+    ]);
+
+    let items = Array.isArray(d.bijzonderheden) ? d.bijzonderheden.filter(Boolean) : [];
+    if (!Array.isArray(d.bijzonderheden) && d.baanTekst) items = [d.baanTekst];
+    const bijz = el("section", { class: "panel notes" + (items.length ? " has" : "") }, [
+      el("h2", { text: "Bijzonderheden" }),
+      items.length
+        ? el("ul", {}, items.map((t) => el("li", { text: t })))
+        : el("p", { class: "none", text: "Geen bijzonderheden." })
+    ]);
+
+    main.appendChild(el("div", { style: "display:grid;gap:16px" }, [
+      top,
+      el("div", { class: "panel tablewrap" }, [table]),
+      cards,
+      verdicts,
+      bijz,
+      d.bronnen ? el("p", { class: "sources", text: d.bronnen }) : null
+    ]));
+
+    const list = $("historyList");
+    list.textContent = "";
+    briefings.forEach((x) => {
+      const btn = el("button", { type: "button", "aria-current": String(x.id === b.id), text: x.data.dag || x.id });
+      btn.addEventListener("click", () => { selected = x.id; render(); });
+      list.appendChild(el("li", {}, [btn]));
+    });
+    $("history").hidden = briefings.length < 2;
+  }
+
+  async function start() {
+    try {
+      const res = await fetch("briefings.json", { cache: "no-store" });
+      if (!res.ok) throw new Error(String(res.status));
+      const json = await res.json();
+      const list = Array.isArray(json.briefings) ? json.briefings : [];
+      briefings = list
+        .filter((b) => b && b.datum)
+        .sort((a, b) => (a.datum < b.datum ? 1 : -1))
+        .slice(0, 10)
+        .map((b) => ({ id: b.datum, data: b }));
+      render();
+    } catch (e) {
+      $("main").textContent = "";
+      $("main").appendChild(el("div", { class: "panel state" }, [el("strong", { text: "Briefing niet geladen" }), "Herlaad de pagina. Lukt het dan nog niet, probeer het later opnieuw."]));
+    }
+  }
+  start();
+})();
+</script>
+
+</body>
+</html>

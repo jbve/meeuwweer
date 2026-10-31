@@ -1,0 +1,167 @@
+{
+ "briefings": [
+  {
+   "datum": "2026-11-01",
+   "dag": "zo 1 nov",
+   "update": "avond",
+   "zonOp": "07:33",
+   "zonOnder": "17:14",
+   "baan": "05",
+   "synoptisch": "Een krachtig hogedrukgebied van ongeveer 1040 hPa ligt ten westen van Ierland, met een rug van ongeveer 1031 hPa tot boven de Benelux. Een zwak koudefront boven de Noordzee blijft zondag ten noorden van ons. Zwakke noord- tot noordoostelijke stroming met vochtige, stabiele lucht onder een inversie op ongeveer 400–450 m: 's ochtends mist, overdag een hardnekkig laag grijs wolkendek.",
+   "kort": "Ochtendmist tot ongeveer 10–11 u, daarna een laag grijs wolkendek. De meeste verwachtingen tillen de basis tussen 13 en 16 u naar 400–500 m (dan marginaal slepen), maar in het slechtste scenario blijft het dek de hele dag op 150–250 m met kans op lichte motregen: dan geen sleepweer. Geen thermiek; beperkende factor is het lage wolkendek.",
+   "blokken": [
+    {
+     "blok": "09–11",
+     "basis": "mist → 100–250 m, gesloten dek",
+     "zicht": "<1 km → 4 km",
+     "wind": "variabel/licht (6)",
+     "xwind": "05 · 0 (1)",
+     "regen": "droog",
+     "thermiek": "geen",
+     "sleep": {
+      "van": "rood"
+     }
+    },
+    {
+     "blok": "11–13",
+     "basis": "250 → 400 m, zwaar bewolkt (kan 150 m blijven)",
+     "zicht": "4–8 km",
+     "wind": "050°/4 (7)",
+     "xwind": "05 · 0 (0)",
+     "regen": "droog, vanaf 12 u kans op motregen",
+     "thermiek": "geen",
+     "sleep": {
+      "van": "rood"
+     }
+    },
+    {
+     "blok": "13–15",
+     "basis": "450–500 m, zwaar bewolkt (kan 200 m blijven)",
+     "zicht": ">10 km (4 km bij motregen)",
+     "wind": "040°/4 (8)",
+     "xwind": "05 · 1 (1)",
+     "regen": "droog, kans op lichte motregen",
+     "thermiek": "geen",
+     "sleep": {
+      "van": "rood"
+     }
+    },
+    {
+     "blok": "15–17:14",
+     "basis": "450 → 400 m, zwaar bewolkt (kan 200 m zijn)",
+     "zicht": ">10 km (4 km bij motregen)",
+     "wind": "020°/4 (8)",
+     "xwind": "05 · 2 (3)",
+     "regen": "droog, kans op lichte motregen",
+     "thermiek": "geen",
+     "sleep": {
+      "van": "rood"
+     }
+    }
+   ],
+   "modellen": "Eens over ochtendmist, weinig wind uit noord tot noordoost, geen buien en de hele dag veel lage bewolking (70–100 %). Oneens over de hoogte van het wolkendek: de meeste verwachtingen tillen het in de middag naar 400–600 m, één houdt het de hele dag op 150–250 m. Ook de luchthavenverwachtingen verschillen: in het zuiden klaart het na 10 u op tot wolken op 450–600 m, in het noorden 40 % kans op motregen met wolken op 150–250 m. Slechtste scenario: gesloten dek op 150–250 m met lichte motregen in de namiddag.",
+   "overland": {
+    "kleur": "rood",
+    "tekst": "Geen overland: stabiele lucht onder een lage inversie, de thermiek komt niet boven nul.",
+    "venster": "geen",
+    "netto": "hooguit 0 m/s rond 14 u",
+    "werkhoogte": "hooguit 400–450 m (inversie)",
+    "type": "geen thermiek, laag wolkendek",
+    "uitspreiding": "hoog: de hele dag een gesloten laag wolkendek rond 400–450 m",
+    "buien": "laag; geen onweer, wel kans op lichte motregen vanaf 12 u",
+    "bovenbewolking": "weinig; het lage wolkendek is de beperkende factor",
+    "windHoogte": "NNO 16–21 kt"
+   },
+   "bijzonderheden": [
+    "Mist tot ongeveer 10–11 u (zicht plaatselijk rond 100 m, wolken op 30 m).",
+    "Laag wolkendek de hele dag; in het slechtste scenario basis 150–250 m met kans (40 %) op lichte motregen en zicht 3,5 km tussen 12 en 19 u.",
+    "Na 17 u draait de zwakke wind naar noord tot noordnoordwest (onder 4 kt); baan 05 blijft bruikbaar.",
+    "Na 17 u zakt het wolkendek weer; 's avonds opnieuw mist mogelijk."
+   ],
+   "bronnen": "Avondbriefing (vervangt die van 17:02, met nieuwere MET Norway, MOSMIX, soaringmeteo en TAF's) · Open-Meteo best match OK (opgehaald 31/10 18:35); Open-Meteo modelvergelijking ICON-D2/ECMWF/AROME niet beschikbaar: daglimiet overschreden — modelvergelijking uit de run van 17:02 · MET Norway updated_at 2026-10-31T17:18Z · DWD MOSMIX 06450 Antwerpen-Deurne IssueTime 2026-10-31 15 UTC · BLIPMAP NL4KMGFS Produced on 28 Oct 2026 05:42 CET (ruim 3 dagen oud, > 24 u) · BLIPMAP NL4KMICON niet beschikbaar (404, 2×) · soaringmeteo GFS run 2026-10-31 12 UTC · TAF EBBR 311700Z, EHEH AMD 311522Z, EBAW 311700Z (dekt zondag niet) · DWD analyse za 31 okt 12 UTC, ICON-verwachting VT zo 1 nov 12 UTC (run 31 okt 00 UTC +36 u) en ma 2 nov 00 UTC (+48 u) · ochtendupdate rond 08:15.",
+   "gemaakt": "2026-10-31T18:37:51+01:00"
+  },
+  {
+   "datum": "2026-10-31",
+   "dag": "za 31 okt",
+   "update": "middag",
+   "zonOp": "07:31",
+   "zonOnder": "17:16",
+   "baan": "05",
+   "blokken": [
+    {
+     "blok": "09–11",
+     "basis": "mist → 100 m · zwaar bewolkt",
+     "zicht": "2–4 km",
+     "wind": "070°/3 (–)",
+     "xwind": "05 · 1",
+     "regen": "droog",
+     "thermiek": "geen",
+     "sleep": {
+      "van": "rood"
+     }
+    },
+    {
+     "blok": "11–13",
+     "basis": "250 → 350 m, klaart op",
+     "zicht": "8–10 km",
+     "wind": "060°/4 (11)",
+     "xwind": "05 · 1 (2)",
+     "regen": "droog",
+     "thermiek": "geen",
+     "sleep": {
+      "van": "rood",
+      "naar": "oranje",
+      "om": "12 u"
+     }
+    },
+    {
+     "blok": "13–15",
+     "basis": "350 m · half bewolkt, plaatselijk open",
+     "zicht": ">10 km",
+     "wind": "050°/5 (13)",
+     "xwind": "05 · 0 (1)",
+     "regen": "droog",
+     "thermiek": "geen",
+     "sleep": {
+      "van": "oranje"
+     }
+    },
+    {
+     "blok": "15–17:16",
+     "basis": "350 m · half tot zwaar bewolkt",
+     "zicht": ">10 km",
+     "wind": "050°/5 (12)",
+     "xwind": "05 · 0 (1)",
+     "regen": "droog",
+     "thermiek": "geen",
+     "sleep": {
+      "van": "oranje"
+     }
+    }
+   ],
+   "overland": {
+    "kleur": "rood",
+    "tekst": "Geen overland: er komt vandaag geen bruikbare thermiek.",
+    "venster": "geen",
+    "netto": "≤ 0 m/s",
+    "werkhoogte": "onder 500 m (inversie)",
+    "type": "geen thermiek, laag wolkendek",
+    "uitspreiding": "n.v.t.",
+    "buien": "geen",
+    "bovenbewolking": "veel middelhoge en hoge bewolking, weinig zon",
+    "windHoogte": "NO 11–13 kt op 1500 m"
+   },
+   "modellen": "Oneens over de middag: één model houdt een gesloten dek op 350 m, één klaart helemaal op en één zit ertussen. Het slechtste scenario is zwaar bewolkt op ongeveer 350 m de hele middag; de waarnemingen rond Antwerpen zijn nu beter dan dat.",
+   "kort": "Beter dan vanochtend: de mist is weg, het zicht is 8–10 km en rond Antwerpen hangen nog maar enkele wolken op ruim 300 m. Slepen kan vanaf ongeveer 13 u, maar blijft marginaal omdat de basis rond 300–400 m ligt en de bewolking kan terugzakken. Vanavond na zonsondergang komt de mist terug.",
+   "bronnen": "Middagupdate · METAR EBAW 1120Z, EBBR 1120Z, EHEH 1125Z · TAF EBAW 1100Z, EBBR 1100Z, EHEH 0600Z · Open-Meteo ICON-D2/ECMWF/AROME 31/10 · weerkaart DWD 06 UTC · BLIPMAP niet gebruikt.",
+   "gemaakt": "2026-10-31T12:40:00+01:00",
+   "synoptisch": "Een hogedrukgebied van ongeveer 1033 hPa ligt boven de Benelux en Duitsland. De ochtendmist is opgelost, maar onder de inversie blijft vochtige lucht hangen, waardoor lage bewolking rond 300–400 m kan blijven of terugkomen. Fronten blijven ver weg boven de Britse eilanden.",
+   "bijzonderheden": [
+    "Kans (30 %) dat de bewolking tussen 14 en 20 u tijdelijk terugzakt naar 150–200 m.",
+    "Vlagen tot ongeveer 13 kt uit het noordoosten; baan 05.",
+    "Vanaf ongeveer 21 u opnieuw mist, morgenochtend vermoedelijk weer dicht."
+   ]
+  }
+ ]
+}
