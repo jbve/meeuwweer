@@ -7,14 +7,14 @@
    "zonOp": "07:33",
    "zonOnder": "17:14",
    "baan": "05",
-   "synoptisch": "Een krachtig hogedrukgebied van ongeveer 1035–1040 hPa ligt ten westen van Ierland, met een rug van ongeveer 1032 hPa boven de Benelux. Een koudefront ligt van Ierland over Noord-Engeland en de Noordzee naar Zuid-Noorwegen en blijft vandaag ten noorden van ons. Zwakke noord- tot noordnoordoostelijke stroming met vochtige, stabiele lucht onder een inversie op ongeveer 500–600 m: ochtendmist, daarna een grijs wolkendek zonder thermiek.",
-   "kort": "Beter dan verwacht: rond Antwerpen en Eindhoven hangt het wolkendek al op 750–850 m met 4–7 km zicht, en de luchthavenverwachtingen geven vanaf 10–11 u meer dan 10 km zicht met een basis rond 600 m. Zweefvliegweer goed vanaf ongeveer 10 u tot 15 u, daarna kans dat het dek tijdelijk zakt naar 350–400 m. Geen thermiek; enige beperkende factor is de wolkenbasis.",
+   "synoptisch": "Een krachtig hogedrukgebied van ongeveer 1035–1040 hPa ligt ten westen van Ierland, met een rug van ongeveer 1030 hPa boven de Benelux. Een koudefront van Ierland over Noord-Engeland en de Noordzee naar Zuid-Noorwegen blijft vandaag ten noorden van ons. Zwakke noordnoordoostelijke stroming met vochtige, stabiele lucht onder een lage inversie: ochtendmist, daarna een grijs wolkendek zonder thermiek.",
+   "kort": "Geen wijziging sinds de vorige update: de webcams in Beerse tonen om 9:11 u een gesloten grijs wolkendek zonder mist, rond Antwerpen en Eindhoven hangt het dek op 750–850 m met 4–7 km zicht. Zweefvliegweer goed van ongeveer 10 u tot 15 u, daarna kans dat het dek tijdelijk zakt naar ongeveer 350 m. Geen thermiek; de wolkenbasis is de beperkende factor.",
    "blokken": [
     {
      "blok": "09–11",
      "basis": "750–850 m, zwaar bewolkt (rond Brussel nog mist)",
      "zicht": "4–7 km → >10 km",
-     "wind": "variabel/licht (3)",
+     "wind": "variabel/licht (5)",
      "xwind": "05 · 0 (1)",
      "regen": "droog",
      "thermiek": "geen",
@@ -28,7 +28,7 @@
      "blok": "11–13",
      "basis": "600–750 m, zwaar bewolkt",
      "zicht": ">10 km",
-     "wind": "variabel/licht (5)",
+     "wind": "variabel/licht (7)",
      "xwind": "05 · 1 (2)",
      "regen": "droog",
      "thermiek": "geen",
@@ -38,10 +38,10 @@
     },
     {
      "blok": "13–15",
-     "basis": "600–750 m, zwaar bewolkt",
+     "basis": "600 m, zwaar bewolkt",
      "zicht": ">10 km",
-     "wind": "020°/4 (8)",
-     "xwind": "05 · 2 (3)",
+     "wind": "variabel/licht (8)",
+     "xwind": "05 · 1 (3)",
      "regen": "droog",
      "thermiek": "geen",
      "sleep": {
@@ -50,10 +50,10 @@
     },
     {
      "blok": "15–17:14",
-     "basis": "600 m, tijdelijk 350–400 m mogelijk",
+     "basis": "600 m, tijdelijk 350 m mogelijk",
      "zicht": ">10 km → 6 km",
-     "wind": "340°/3 (6)",
-     "xwind": "05 · 1 (2)",
+     "wind": "variabel/licht (8)",
+     "xwind": "05 · 2 (4)",
      "regen": "droog",
      "thermiek": "geen",
      "sleep": {
@@ -63,26 +63,26 @@
      }
     }
    ],
-   "modellen": "De waarnemingen zijn duidelijk beter dan de modellen: die gaven voor vanochtend mist of een dek onder 150 m, maar rond Antwerpen en Eindhoven hangt het wolkendek al op 750–850 m. De luchthavenverwachtingen houden de basis vandaag rond 600 m; één verwachting geeft vanaf 15 u tijdelijk een dek rond 350–400 m. Het slechtste modelscenario (250–350 m) lijkt daarmee te pessimistisch.",
+   "modellen": "De waarnemingen zijn beter dan de modellen: de modellen houden de hele dag een laag dek met een basis van 400–600 m rond de middag en in het slechtste geval 150–200 m in de ochtend, terwijl rond Antwerpen en Eindhoven het dek al op 750–850 m hangt. Eén model geeft rond 12 u en na 16 u korte opklaringen en rond 13–14 u wat meer wind (vlagen tot 12 kt). De luchthavenverwachtingen houden de basis rond 600 m, met vanaf 15 u tijdelijk een dek rond 350 m.",
    "overland": {
     "kleur": "rood",
     "tekst": "Geen overland: stabiele lucht onder een lage inversie en weinig zon, de thermiek komt niet boven nul.",
     "venster": "geen",
     "netto": "hooguit −0,1 m/s rond 14 u",
-    "werkhoogte": "hooguit 600–750 m (wolkendek/inversie)",
+    "werkhoogte": "hooguit 600 m (wolkendek/inversie)",
     "type": "geen thermiek, laag wolkendek",
-    "uitspreiding": "hoog: de hele dag een (bijna) gesloten wolkendek rond 450–600 m",
-    "buien": "laag; geen onweer, geen neerslag tot zonsondergang",
+    "uitspreiding": "hoog: de hele dag een (bijna) gesloten wolkendek rond 400–600 m",
+    "buien": "laag; geen onweer, droog tot zonsondergang",
     "bovenbewolking": "weinig; het lage wolkendek is de beperkende factor",
     "windHoogte": "NNO ongeveer 20 kt"
    },
    "bijzonderheden": [
-    "Rond Brussel om 08:50 nog dichte mist (zicht 600 m); rond Antwerpen en Eindhoven al 4–7 km zicht onder een dek op 750–850 m. Opklaring tot >10 km verwacht tussen 9 en 11 u.",
-    "Vanaf ongeveer 15 u kans op tijdelijk zwaar bewolkt rond 350–400 m.",
+    "Rond Brussel om 08:50 nog dichte mist (zicht 600 m); rond Antwerpen al 7 km zicht onder een dek op 750 m, rond Eindhoven 4 km onder een dek op 850 m. In Beerse om 9:10 u geen mist meer, wel een gesloten grijs dek en windstil. Opklaring tot >10 km verwacht tussen 9 en 11 u.",
+    "Vanaf ongeveer 15 u kans op tijdelijk zwaar bewolkt rond 350 m.",
     "Na zonsondergang zakt het dek weer en komt de mist terug; vanaf 19 u kans (30 %) op lichte motregen."
    ],
-   "bronnen": "Ochtendupdate (bijgewerkt 09:10) · METAR EBAW 0750Z, EBBR 0750Z, EHEH 0755Z · TAF EBAW 010500Z, EBBR 010500Z, EHEH 010547Z · eerdere run 08:17: Open-Meteo best match + ICON-D2 / ECMWF IFS 0,25° / AROME France HD, BLIPMAP NL4KMGFS Produced on 28 Oct 2026 05:42 CET (verouderd), DWD bodemanalyse zo 1 nov 00 UTC · Weerstation Kempen (Beerse) nog niet bereikbaar.",
-   "gemaakt": "2026-11-01T09:10:00+01:00"
+   "bronnen": "Ochtendupdate · METAR EBAW 0750Z, EBBR 0750Z, EHEH 0755Z · TAF EBAW 010500Z, EBBR 010500Z, EHEH 010547Z · Open-Meteo ICON-D2 / ECMWF IFS 0,25° / AROME France HD (opgehaald 09:11); Open-Meteo best match niet bereikbaar (time-out) · BLIPMAP NL4KMGFS Produced on 28 Oct 2026 05:42 CET (verouderd, > 24 u); NL4KMICON niet beschikbaar (404) · DWD bodemanalyse zo 1 nov 00 UTC · Weerstation Kempen (Beerse): webcam 09:11 (6,8 °C, windstil); realtime.txt niet beschikbaar (404, ook onder /weer/).",
+   "gemaakt": "2026-11-01T09:13:03+01:00"
   },
   {
    "datum": "2026-10-31",
