@@ -108,6 +108,13 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
 .history button[aria-current="true"] { border-color: var(--accent); color: var(--accent); font-weight: 500; }
 .history button:focus-visible, .history button:hover { outline: 2px solid var(--accent); outline-offset: 1px; }
 
+.meteo { padding: 14px 16px; display: grid; gap: 10px; }
+.meteo h2 { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing: .04em; text-transform: uppercase; }
+.meteo dl { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 10px 18px; margin: 0; }
+.meteo dt { font-family: var(--font-display); font-weight: 600; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.meteo dd { margin: 2px 0 0; font-size: 15px; }
+.meteo .warn { margin: 0; color: var(--amber); font-weight: 600; }
+
 .outlook { display: grid; gap: 10px; }
 .outlook-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; }
 .outlook-head h2 { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing: .04em; text-transform: uppercase; }
@@ -293,10 +300,19 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
         : el("p", { class: "none", text: "Geen bijzonderheden." })
     ]);
 
+    const M = d.meteo || null;
+    const MROWS = [["temp", "Temperatuur"], ["dauwpunt", "Dauwpunt"], ["kritisch", "Kritische temperatuur"], ["vriesniveau", "Vriesniveau"], ["qnh", "Luchtdruk (QNH)"]];
+    const meteoPanel = M ? el("section", { class: "panel meteo" }, [
+      el("h2", { text: "Temperatuur en luchtdruk" }),
+      el("dl", {}, MROWS.filter((r) => M[r[0]]).map((r) => el("div", {}, [el("dt", { text: r[1] }), el("dd", { text: M[r[0]] })]))),
+      M.waarschuwing ? el("p", { class: "warn", text: "⚠️ " + M.waarschuwing }) : null
+    ]) : null;
+
     main.appendChild(el("div", { style: "display:grid;gap:16px" }, [
       top,
       el("div", { class: "panel tablewrap" }, [table]),
       cards,
+      meteoPanel,
       verdicts,
       bijz,
       d.bronnen ? el("details", { class: "srcbox" }, [el("summary", { text: "Bronnen en runtijden" }), el("p", { class: "sources", text: d.bronnen })]) : null
@@ -307,7 +323,7 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
   }
 
   const OLABEL = { groen: "Kansrijk", oranje: "Twijfel", rood: "Slecht" };
-  const OROWS = [["wind", "Wind"], ["baan", "Baan"], ["neerslag", "Neerslag"], ["bewolking", "Bewolking"], ["thermiek", "Thermiek"]];
+  const OROWS = [["wind", "Wind"], ["baan", "Baan"], ["neerslag", "Neerslag"], ["bewolking", "Bewolking"], ["thermiek", "Thermiek"], ["temp", "Temperatuur"]];
 
   function renderOutlook(json) {
     const dagen = Array.isArray(json && json.dagen) ? json.dagen : [];
