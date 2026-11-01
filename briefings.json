@@ -3,83 +3,87 @@
   {
    "datum": "2026-11-01",
    "dag": "zo 1 nov",
-   "update": "avond",
+   "update": "ochtend",
    "zonOp": "07:33",
    "zonOnder": "17:14",
    "baan": "05",
-   "synoptisch": "Een krachtig hogedrukgebied van ongeveer 1040 hPa ligt ten westen van Ierland, met een rug van ongeveer 1031 hPa tot boven de Benelux. Een zwak koudefront boven de Noordzee blijft zondag ten noorden van ons. Zwakke noord- tot noordoostelijke stroming met vochtige, stabiele lucht onder een inversie op ongeveer 400–450 m: 's ochtends mist, overdag een hardnekkig laag grijs wolkendek.",
-   "kort": "Ochtendmist tot ongeveer 10–11 u, daarna een laag grijs wolkendek. De meeste verwachtingen tillen de basis tussen 13 en 16 u naar 400–500 m (dan marginaal slepen), maar in het slechtste scenario blijft het dek de hele dag op 150–250 m met kans op lichte motregen: dan geen sleepweer. Geen thermiek; beperkende factor is het lage wolkendek.",
+   "synoptisch": "Een krachtig hogedrukgebied van ongeveer 1035–1040 hPa ligt ten westen van Ierland, met een rug van ongeveer 1032 hPa boven de Benelux. Een koudefront ligt van Ierland over Noord-Engeland en de Noordzee naar Zuid-Noorwegen en blijft vandaag ten noorden van ons. Zwakke noord- tot noordnoordoostelijke stroming met vochtige, stabiele lucht onder een inversie op ongeveer 500–600 m: ochtendmist, daarna een grijs wolkendek zonder thermiek.",
+   "kort": "Iets beter dan gisteravond verwacht: rond Antwerpen is de mist al opgetild tot nevel (3 km) onder een wolkendek op ongeveer 900 m, en de luchthavenverwachtingen geven vanaf 10–11 u meer dan 10 km zicht met een basis rond 450–600 m. Zweefvliegweer marginaal van ongeveer 10–11 u tot 17 u, geen thermiek. Beperkende factor: het lage wolkendek, dat in één verwachting rond 250–350 m blijft.",
    "blokken": [
     {
      "blok": "09–11",
-     "basis": "mist → 100–250 m, gesloten dek",
-     "zicht": "<1 km → 4 km",
-     "wind": "variabel/licht (6)",
-     "xwind": "05 · 0 (1)",
+     "basis": "mist/laag dek → 450 m, zwaar bewolkt",
+     "zicht": "<1–3 km → >10 km",
+     "wind": "variabel/licht (5)",
+     "xwind": "05 · 1 (2)",
      "regen": "droog",
      "thermiek": "geen",
      "sleep": {
-      "van": "rood"
+      "van": "rood",
+      "naar": "oranje",
+      "om": "10 u"
      }
     },
     {
      "blok": "11–13",
-     "basis": "250 → 400 m, zwaar bewolkt (kan 150 m blijven)",
-     "zicht": "4–8 km",
-     "wind": "050°/4 (7)",
-     "xwind": "05 · 0 (0)",
-     "regen": "droog, vanaf 12 u kans op motregen",
+     "basis": "450 m half bewolkt, 600 m zwaar bewolkt (kan 250–300 m zijn)",
+     "zicht": "5–10 km",
+     "wind": "variabel/licht (6)",
+     "xwind": "05 · 1 (3)",
+     "regen": "droog",
      "thermiek": "geen",
      "sleep": {
-      "van": "rood"
+      "van": "oranje"
      }
     },
     {
      "blok": "13–15",
-     "basis": "450–500 m, zwaar bewolkt (kan 200 m blijven)",
-     "zicht": ">10 km (4 km bij motregen)",
-     "wind": "040°/4 (8)",
-     "xwind": "05 · 1 (1)",
-     "regen": "droog, kans op lichte motregen",
+     "basis": "450–600 m, zwaar bewolkt (kan 350 m zijn)",
+     "zicht": ">10 km",
+     "wind": "020°/4 (9)",
+     "xwind": "05 · 2 (4)",
+     "regen": "droog",
      "thermiek": "geen",
      "sleep": {
-      "van": "rood"
+      "van": "oranje"
      }
     },
     {
      "blok": "15–17:14",
-     "basis": "450 → 400 m, zwaar bewolkt (kan 200 m zijn)",
-     "zicht": ">10 km (4 km bij motregen)",
-     "wind": "020°/4 (8)",
-     "xwind": "05 · 2 (3)",
-     "regen": "droog, kans op lichte motregen",
+     "basis": "450 → 350 m, zwaar bewolkt (kan 150–250 m zijn)",
+     "zicht": ">10 km → 5 km",
+     "wind": "020°/4 (9)",
+     "xwind": "05 · 2 (4)",
+     "regen": "droog",
      "thermiek": "geen",
      "sleep": {
-      "van": "rood"
+      "van": "oranje",
+      "naar": "rood",
+      "om": "17 u"
      }
     }
    ],
-   "modellen": "Eens over ochtendmist, weinig wind uit noord tot noordoost, geen buien en de hele dag veel lage bewolking (70–100 %). Oneens over de hoogte van het wolkendek: de meeste verwachtingen tillen het in de middag naar 400–600 m, één houdt het de hele dag op 150–250 m. Ook de luchthavenverwachtingen verschillen: in het zuiden klaart het na 10 u op tot wolken op 450–600 m, in het noorden 40 % kans op motregen met wolken op 150–250 m. Slechtste scenario: gesloten dek op 150–250 m met lichte motregen in de namiddag.",
+   "modellen": "Eens over weinig wind uit noord tot noordnoordoost, droog weer, geen buien en de hele dag veel lage bewolking. Oneens over de hoogte van het wolkendek: twee verwachtingen tillen het in de middag naar 450–550 m, één houdt het op 250–350 m en laat het na 16 u weer zakken. De huidige waarnemingen zijn beter dan de modellen: rond Antwerpen en Eindhoven hangt het wolkendek nu al op 750–900 m met nevel, waar de modellen nog mist of een dek onder 150 m geven; rond Brussel is het wel nog dichte mist. Slechtste scenario: zwaar bewolkt rond 250–350 m de hele middag.",
    "overland": {
     "kleur": "rood",
-    "tekst": "Geen overland: stabiele lucht onder een lage inversie, de thermiek komt niet boven nul.",
+    "tekst": "Geen overland: stabiele lucht onder een lage inversie en weinig zon, de thermiek komt niet boven nul.",
     "venster": "geen",
-    "netto": "hooguit 0 m/s rond 14 u",
-    "werkhoogte": "hooguit 400–450 m (inversie)",
+    "netto": "hooguit −0,1 m/s rond 14 u",
+    "werkhoogte": "hooguit 450–600 m (wolkendek/inversie)",
     "type": "geen thermiek, laag wolkendek",
-    "uitspreiding": "hoog: de hele dag een gesloten laag wolkendek rond 400–450 m",
-    "buien": "laag; geen onweer, wel kans op lichte motregen vanaf 12 u",
+    "uitspreiding": "hoog: de hele dag een (bijna) gesloten wolkendek rond 450–600 m",
+    "buien": "laag; geen onweer, geen neerslag tot zonsondergang",
     "bovenbewolking": "weinig; het lage wolkendek is de beperkende factor",
-    "windHoogte": "NNO 16–21 kt"
+    "windHoogte": "NNO ongeveer 20 kt"
    },
    "bijzonderheden": [
-    "Mist tot ongeveer 10–11 u (zicht plaatselijk rond 100 m, wolken op 30 m).",
-    "Laag wolkendek de hele dag; in het slechtste scenario basis 150–250 m met kans (40 %) op lichte motregen en zicht 3,5 km tussen 12 en 19 u.",
-    "Na 17 u draait de zwakke wind naar noord tot noordnoordwest (onder 4 kt); baan 05 blijft bruikbaar.",
-    "Na 17 u zakt het wolkendek weer; 's avonds opnieuw mist mogelijk."
+    "Rond Brussel om 07:50 nog dichte mist (zicht 100–200 m), rond Antwerpen al nevel (3 km) met wolken op 900 m; opklaring tot >10 km verwacht tussen 9 en 11 u.",
+    "Vanaf ongeveer 15 u kans op tijdelijk zwaar bewolkt rond 350 m; in het slechtste scenario zakt het dek na 16 u naar 150–250 m.",
+    "Rond 15 u draait de zeer zwakke wind in één verwachting even naar noordwest (330°, onder 4 kt); baan 05 blijft bruikbaar.",
+    "Na zonsondergang zakt het wolkendek weer en komt de mist terug; vanaf 19 u kans (30 %) op lichte motregen."
    ],
-   "bronnen": "Avondbriefing (vervangt die van 17:02, met nieuwere MET Norway, MOSMIX, soaringmeteo en TAF's) · Open-Meteo best match OK (opgehaald 31/10 18:35); Open-Meteo modelvergelijking ICON-D2/ECMWF/AROME niet beschikbaar: daglimiet overschreden — modelvergelijking uit de run van 17:02 · MET Norway updated_at 2026-10-31T17:18Z · DWD MOSMIX 06450 Antwerpen-Deurne IssueTime 2026-10-31 15 UTC · BLIPMAP NL4KMGFS Produced on 28 Oct 2026 05:42 CET (ruim 3 dagen oud, > 24 u) · BLIPMAP NL4KMICON niet beschikbaar (404, 2×) · soaringmeteo GFS run 2026-10-31 12 UTC · TAF EBBR 311700Z, EHEH AMD 311522Z, EBAW 311700Z (dekt zondag niet) · DWD analyse za 31 okt 12 UTC, ICON-verwachting VT zo 1 nov 12 UTC (run 31 okt 00 UTC +36 u) en ma 2 nov 00 UTC (+48 u) · ochtendupdate rond 08:15.",
-   "gemaakt": "2026-10-31T18:37:51+01:00"
+   "bronnen": "Ochtendupdate · METAR EBAW 0650Z, EBBR 0650Z, EHEH 0655Z (laatste 3 u) · TAF EBAW 010500Z, EBBR 010500Z, EHEH 010547Z · Open-Meteo best match + ICON-D2 / ECMWF IFS 0,25° / AROME France HD (opgehaald 1/11 08:16) · BLIPMAP NL4KMGFS Produced on 28 Oct 2026 05:42 CET (ruim 3 dagen oud, alleen indicatief: W* max 0,9 m/s) · BLIPMAP NL4KMICON niet beschikbaar (404) · DWD bodemanalyse zo 1 nov 00 UTC.",
+   "gemaakt": "2026-11-01T08:17:50+01:00"
   },
   {
    "datum": "2026-10-31",
