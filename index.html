@@ -140,7 +140,7 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
   </header>
 
   <div id="main">
-    <div class="panel state"><strong>Briefing wordt geladen</strong>De briefing verschijnt de avond voor elke vliegdag rond 18:35, met een update op de vliegdag zelf rond 08:15.</div>
+    <div class="panel state"><strong>Briefing wordt geladen</strong>De briefing verschijnt de avond voor elke vliegdag rond 18:15, met een update op de vliegdag zelf rond 08:15.</div>
   </div>
 
   <section class="outlook" id="outlook" hidden>
@@ -226,7 +226,7 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
       $("title").textContent = "Meeuw Weerbriefing";
       main.appendChild(el("div", { class: "panel state" }, [
         el("strong", { text: "Geen briefing voor vandaag" }),
-        "De volgende briefing verschijnt de avond voor de volgende vliegdag rond 18:35."
+        "De volgende briefing verschijnt de avond voor de volgende vliegdag rond 18:15."
       ]));
       historyList(null);
       $("history").hidden = briefings.length < 1;
