@@ -86,8 +86,8 @@
     "Na 15 u draait de zwakke wind soms naar 340°, dicht bij de grens voor baan 23, maar met hooguit 3 kt blijft baan 05.",
     "Na zonsondergang zakt het dek weer; vanavond kans (30 %) op lichte motregen en vannacht opnieuw nevel of mist."
    ],
-   "bronnen": "Ochtendupdate · METAR EBAW 0920Z, EBBR 0920Z, EHEH 0925Z · TAF EBAW 010800Z, EBBR 010500Z, EHEH 010547Z · Open-Meteo best match (10:38); Open-Meteo modelvergelijking ICON-D2/ECMWF/AROME niet bereikbaar (verbindingsfout, 2×) · BLIPMAP NL4KMGFS Produced on 28 Oct 2026 05:42 CET (verouderd, > 24 u); NL4KMICON niet beschikbaar · DWD bodemanalyse zo 1 nov 06 UTC · Weerstation Kempen (Beerse): webcams 10:37–10:38 (8,4 °C, windstil).",
-   "gemaakt": "2026-11-01T10:40:43+01:00"
+   "bronnen": "Ochtendupdate (controle-run 10:42, geen nieuwe waarnemingen) · METAR EBAW 0920Z, EBBR 0920Z, EHEH 0925Z · TAF EBAW 010800Z, EBBR 010500Z, EHEH 010547Z · Open-Meteo best match (10:38); Open-Meteo modelvergelijking ICON-D2/ECMWF/AROME niet bereikbaar (verbindingsfout, 2×) · BLIPMAP NL4KMGFS Produced on 28 Oct 2026 05:42 CET (verouderd, > 24 u); NL4KMICON niet beschikbaar · DWD bodemanalyse zo 1 nov 06 UTC · Weerstation Kempen (Beerse): webcams 10:37–10:38 (8,4 °C, windstil).",
+   "gemaakt": "2026-11-01T10:41:29+01:00"
   },
   {
    "datum": "2026-10-31",
