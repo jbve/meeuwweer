@@ -7,15 +7,15 @@
    "zonOp": "07:33",
    "zonOnder": "17:14",
    "baan": "05",
-   "synoptisch": "Een krachtig hogedrukgebied van ruim 1035 hPa ligt ten westen van Ierland, met een uitloper van ongeveer 1030 hPa boven de Benelux. Een koudefront van Wales over de Noordzee naar Zuid-Noorwegen blijft vandaag ten noorden van ons. Zwakke noordelijke stroming met vochtige, stabiele lucht onder een lage inversie: een grijs wolkendek zonder thermiek.",
-   "kort": "Kleine verbetering sinds de vorige update: rond Antwerpen hangt het dek op 750 m (verwachting 600–750 m de hele dag, ongeveer 8 km zicht), rond Eindhoven zelfs op bijna 1000 m, en in Beerse is het om 9:30 u droog en windstil onder een gesloten grijs dek. Zweefvliegweer goed van nu tot ongeveer 15 u, daarna kans dat het dek tijdelijk zakt naar 250–350 m. Geen thermiek; het lage wolkendek is de beperkende factor.",
+   "synoptisch": "Een krachtig hogedrukgebied van ruim 1035 hPa ligt ten westen van Ierland, met een uitloper van ongeveer 1030 hPa boven de Benelux. Een koudefront van Wales over de Noordzee naar Zuid-Noorwegen blijft vandaag ten noorden van ons. Zwakke noordelijke stroming met vochtige, stabiele lucht onder een inversie: een grijs wolkendek zonder thermiek.",
+   "kort": "Geen wijziging sinds de update van 9:47 u: rond Antwerpen een dek op 750 m met 8 km zicht, rond Eindhoven op ongeveer 950 m, en in Beerse om 10:38 u een gesloten grijs dek, droog en windstil; ook rond Brussel is de nevel nu grotendeels weg. Zweefvliegweer goed van nu tot ongeveer 15 u, daarna kans dat het dek tijdelijk zakt naar 350 m. Geen thermiek; het lage wolkendek is de beperkende factor.",
    "blokken": [
     {
      "blok": "09–11",
-     "basis": "750 m, zwaar bewolkt (rond Brussel nog nevel en zeer laag)",
-     "zicht": "5–7 km → 8 km",
+     "basis": "750 m, zwaar bewolkt",
+     "zicht": "6–8 km",
      "wind": "variabel/licht (5)",
-     "xwind": "05 · 0 (2)",
+     "xwind": "05 · 2 (4)",
      "regen": "droog",
      "thermiek": "geen",
      "sleep": {
@@ -24,10 +24,10 @@
     },
     {
      "blok": "11–13",
-     "basis": "600–750 m, zwaar bewolkt",
+     "basis": "750 m, zwaar bewolkt",
      "zicht": "8 km",
      "wind": "variabel/licht (7)",
-     "xwind": "05 · 1 (2)",
+     "xwind": "05 · 2 (6)",
      "regen": "droog",
      "thermiek": "geen",
      "sleep": {
@@ -36,10 +36,10 @@
     },
     {
      "blok": "13–15",
-     "basis": "600–750 m, zwaar bewolkt",
+     "basis": "750 m, zwaar bewolkt",
      "zicht": "8 km",
-     "wind": "variabel/licht (8)",
-     "xwind": "05 · 1 (3)",
+     "wind": "variabel/licht (7)",
+     "xwind": "05 · 2 (5)",
      "regen": "droog",
      "thermiek": "geen",
      "sleep": {
@@ -48,10 +48,10 @@
     },
     {
      "blok": "15–17:14",
-     "basis": "600 m, tijdelijk 250–350 m mogelijk",
-     "zicht": "8 km",
-     "wind": "variabel/licht (8)",
-     "xwind": "05 · 1 (3)",
+     "basis": "750 m, tijdelijk 350 m mogelijk",
+     "zicht": "6–8 km",
+     "wind": "variabel/licht (6)",
+     "xwind": "05 · 3 (6)",
      "regen": "droog",
      "thermiek": "geen",
      "sleep": {
@@ -61,33 +61,33 @@
      }
     }
    ],
-   "modellen": "De modellen zijn het eens over een (bijna) gesloten laag dek, maar geven een lagere basis dan wat nu wordt waargenomen: rond de middag 350–600 m, in de ochtend en na 16 u 150–300 m, tegenover 750–1000 m rond Antwerpen en Eindhoven. Oneens over opklaringen: één model geeft korte opklaringen rond 12 u en na 16 u en wat meer wind (vlagen tot 12 kt rond 13–14 u). Slechtste scenario: het dek zakt na 16 u tot ongeveer 150 m.",
+   "meteo": {
+    "temp": "max 10 °C (rond 14 u)",
+    "dauwpunt": "7–9 °C, de hele dag 1–1,5 °C onder de temperatuur: laag dek en nevel blijven makkelijk hangen",
+    "kritisch": "15 °C — wordt niet gehaald (max 10 °C), geen thermiek; inversie tussen ongeveer 900 en 1600 m",
+    "vriesniveau": "2700 m",
+    "qnh": "1032 hPa, stabiel"
+   },
+   "modellen": "Niet opnieuw vergeleken (modelvergelijking nu niet bereikbaar); stand van 9:45 u: de modellen zijn het eens over een (bijna) gesloten laag dek, maar geven een lagere basis dan nu wordt waargenomen (300–650 m rond de middag, 150–300 m na 16 u, tegenover 750–950 m rond Antwerpen en Eindhoven). Slechtste scenario: het dek zakt na 16 u tot ongeveer 150 m. De waarnemingen zijn nog steeds beter dan de modellen.",
    "overland": {
     "kleur": "rood",
-    "tekst": "Geen overland: stabiele lucht onder een lage inversie en weinig zon, de thermiek komt niet boven nul.",
+    "tekst": "Geen overland: stabiele lucht onder een inversie en weinig zon, de thermiek komt niet boven nul.",
     "venster": "geen",
     "netto": "hooguit −0,1 m/s rond 13–14 u",
     "werkhoogte": "hooguit 600 m (wolkendek/inversie)",
     "type": "geen thermiek, laag wolkendek",
-    "uitspreiding": "hoog: de hele dag een gesloten wolkendek rond 600–750 m",
+    "uitspreiding": "hoog: de hele dag een gesloten wolkendek rond 750 m",
     "buien": "laag; geen onweer, droog tot zonsondergang",
-    "bovenbewolking": "weinig; het lage wolkendek is de beperkende factor",
-    "windHoogte": "NNO ongeveer 20 kt, later 16 kt"
+    "bovenbewolking": "geen; het lage wolkendek is de beperkende factor",
+    "windHoogte": "NO ongeveer 20 kt, later 16 kt"
    },
    "bijzonderheden": [
-    "Rond Brussel om 9:20 u nog nevel met 1,5 km zicht en een dek op 50 m; rond Antwerpen 7 km zicht onder een dek op 750 m, rond Eindhoven 6 km onder een dek op 1000 m. In Beerse om 9:30 u een gesloten grijs dek, goed zicht en windstil.",
-    "Vanaf ongeveer 15 u kans op tijdelijk een lager dek rond 250–350 m; in het slechtste model na 16 u zelfs rond 150 m.",
-    "Na zonsondergang zakt het dek weer; vanaf 19 u kans (30 %) op lichte motregen en vannacht opnieuw nevel of mist."
+    "Vanaf ongeveer 15 u kans op tijdelijk een lager dek rond 350 m; in het slechtste model na 16 u zelfs rond 150 m.",
+    "Na 15 u draait de zwakke wind soms naar 340°, dicht bij de grens voor baan 23, maar met hooguit 3 kt blijft baan 05.",
+    "Na zonsondergang zakt het dek weer; vanavond kans (30 %) op lichte motregen en vannacht opnieuw nevel of mist."
    ],
-   "bronnen": "Ochtendupdate · METAR EBAW 0820Z, EBBR 0820Z, EHEH 0825Z · TAF EBAW 010800Z, EBBR 010500Z, EHEH 010547Z · Open-Meteo best match (09:28) en ICON-D2 / ECMWF IFS 0,25° / AROME France HD (09:31) · BLIPMAP NL4KMGFS Produced on 28 Oct 2026 05:42 CET (verouderd, > 24 u); NL4KMICON niet beschikbaar (404) · DWD bodemanalyse zo 1 nov 06 UTC · Weerstation Kempen (Beerse): webcam 09:31 (7,1 °C, windstil); realtime.txt niet beschikbaar (404).",
-   "gemaakt": "2026-11-01T09:31:47+01:00",
-   "meteo": {
-    "temp": "max 9 °C (rond 14 u)",
-    "dauwpunt": "5–8 °C, maar 1–1,5 °C onder de temperatuur: laag dek en nevel blijven makkelijk hangen",
-    "kritisch": "15 °C — wordt niet gehaald (max 9 °C), geen thermiek; inversie tussen ongeveer 900 en 1600 m",
-    "vriesniveau": "2700 m",
-    "qnh": "1032 hPa, stabiel"
-   }
+   "bronnen": "Ochtendupdate · METAR EBAW 0920Z, EBBR 0920Z, EHEH 0925Z · TAF EBAW 010800Z, EBBR 010500Z, EHEH 010547Z · Open-Meteo best match (10:38); Open-Meteo modelvergelijking ICON-D2/ECMWF/AROME niet bereikbaar (verbindingsfout, 2×) · BLIPMAP NL4KMGFS Produced on 28 Oct 2026 05:42 CET (verouderd, > 24 u); NL4KMICON niet beschikbaar · DWD bodemanalyse zo 1 nov 06 UTC · Weerstation Kempen (Beerse): webcams 10:37–10:38 (8,4 °C, windstil).",
+   "gemaakt": "2026-11-01T10:40:43+01:00"
   },
   {
    "datum": "2026-10-31",
