@@ -118,7 +118,8 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
 .outlook { display: grid; gap: 10px; }
 .outlook-head { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 4px 16px; }
 .outlook-head h2 { margin: 0; font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing: .04em; text-transform: uppercase; }
-.outlook-head small { font-size: 13px; color: var(--muted); }
+.outlook-head small { font-size: 13px; color: var(--muted); flex-basis: 100%; }
+.oupd { font-family: var(--font-data); font-size: 13px; color: var(--fg); }
 .ocards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
 .ocard { padding: 14px; display: grid; gap: 8px; align-content: start; border-top: 4px solid var(--line); }
 .ocard.groen { border-top-color: var(--green); }
@@ -154,6 +155,7 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
   <section class="outlook" id="outlook" hidden>
     <div class="outlook-head">
       <h2>Vooruitzicht volgende vliegdagen</h2>
+      <span class="oupd" id="outlookUpd"></span>
       <small id="outlookNote"></small>
     </div>
     <div class="ocards" id="outlookCards"></div>
@@ -354,7 +356,11 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
     });
     let tijd = "";
     try { if (json.gemaakt) tijd = new Date(json.gemaakt).toLocaleString("nl-BE", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Brussels" }); } catch (e) {}
-    $("outlookNote").textContent = "Grove verwachting, nog niet betrouwbaar genoeg om op te plannen: hoe verder vooruit, hoe onzekerder. Kijk de avond ervoor naar de volledige briefing" + (tijd ? " · gemaakt " + tijd : "") + ".";
+    const nu = new Date();
+    const uurNu = Number(nu.toLocaleString("en-GB", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "Europe/Brussels" }).replace(":", "."));
+    const volgende = uurNu < 18.15 ? "vandaag rond 18:15" : "morgen rond 18:15";
+    $("outlookNote").textContent = "Grove verwachting, nog niet betrouwbaar genoeg om op te plannen: hoe verder vooruit, hoe onzekerder. Kijk de avond ervoor naar de volledige briefing.";
+    $("outlookUpd").textContent = "Bijgewerkt " + (tijd || "–") + " · volgende update " + volgende;
     $("outlook").hidden = false;
   }
 
