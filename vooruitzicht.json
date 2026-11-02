@@ -1,5 +1,5 @@
 {
- "gemaakt": "2026-11-02T19:22:00+01:00",
+ "gemaakt": "2026-11-02T19:27:00+01:00",
  "dagen": [
   {
    "datum": "2026-11-05",
@@ -13,7 +13,7 @@
    "bewolking": "onbewolkt tot enkele wolken",
    "thermiek": "zwak (zon, maar koude novemberlucht)",
    "temp": "max 9 °C, ochtend 3 °C",
-   "kansen": "laag dek 0 % · regen 0 % · harde wind 20 % · ochtendmist 0 %"
+   "kansen": "laag dek 0 % · regen 0 % · vlagen > 20 kt 20 % · zijwind > 12 kt 0 % · ochtendmist 0 %"
   },
   {
    "datum": "2026-11-06",
@@ -27,7 +27,7 @@
    "bewolking": "ochtendmist mogelijk, daarna onbewolkt; vanaf de avond meer bewolking",
    "thermiek": "zwak",
    "temp": "max 9 °C, ochtend 1 °C",
-   "kansen": "laag dek 0 % · regen 0 % · harde wind 0 % · ochtendmist 40 %"
+   "kansen": "laag dek 0 % · regen 0 % · vlagen > 20 kt 0 % · zijwind > 12 kt 20 % · ochtendmist 40 %"
   },
   {
    "datum": "2026-11-07",
@@ -41,7 +41,7 @@
    "bewolking": "mist of laag dek, basis rond 200 m",
    "thermiek": "geen",
    "temp": "max 7 °C, ochtend 2 °C",
-   "kansen": "laag dek 60 % · regen 10 % · harde wind 0 % · ochtendmist 90 %"
+   "kansen": "laag dek 60 % · regen 10 % · vlagen > 20 kt 0 % · zijwind > 12 kt 10 % · ochtendmist 90 %"
   }
  ]
 }
