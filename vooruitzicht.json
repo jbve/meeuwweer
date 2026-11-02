@@ -1,10 +1,10 @@
 {
- "gemaakt": "2026-11-02T19:00:00+01:00",
+ "gemaakt": "2026-11-02T19:15:00+01:00",
  "dagen": [
   {
    "datum": "2026-11-05",
    "dag": "do 5 nov",
-   "kleur": "oranje",
+   "kleur": "groen",
    "zekerheid": "laag (slechts één model beschikbaar, 3 dagen vooruit)",
    "tekst": "Volgens het enige beschikbare model: hogedruk met droge oostnoordoostelijke wind, zonnig en helder. Mistkans klein, omdat de wind ook 's nachts rond 8 kt blijft. Nog niet bevestigd door andere modellen.",
    "wind": "oostnoordoost, rond 8 kt",
@@ -19,7 +19,7 @@
    "dag": "vr 6 nov",
    "kleur": "oranje",
    "zekerheid": "laag (slechts één model beschikbaar, 4 dagen vooruit)",
-   "tekst": "Heldere, bijna windstille nacht: reële kans op ochtendmist en rijp op de vleugels, vermoedelijk opgelost rond 10–11 u. Daarna zonnig; 's avonds komt er bewolking aan.",
+   "tekst": "Heldere, bijna windstille nacht: reële kans op ochtendmist en rijp op de vleugels, vermoedelijk opgelost rond 10–11 u. Daarna zonnig; 's avonds komt er bewolking aan. Nog niet bevestigd door andere modellen.",
    "wind": "zwak, oost tot oostnoordoost 3–5 kt",
    "baan": "variabel/licht",
    "neerslag": "droog",
@@ -30,7 +30,7 @@
   {
    "datum": "2026-11-07",
    "dag": "za 7 nov",
-   "kleur": "oranje",
+   "kleur": "rood",
    "zekerheid": "laag (slechts één model beschikbaar, 5 dagen vooruit)",
    "tekst": "Volgens het enige beschikbare model: windstil en vochtig, met grote kans op mist of een laag grijs dek (rond 200 m) de hele dag. Nog niet bevestigd door andere modellen.",
    "wind": "bijna windstil, richting wisselend (1–3 kt)",
