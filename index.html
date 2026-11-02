@@ -326,7 +326,7 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
   }
 
   const OLABEL = { groen: "Kansrijk", oranje: "Twijfel", rood: "Slecht" };
-  const OROWS = [["wind", "Wind"], ["baan", "Baan"], ["neerslag", "Neerslag"], ["bewolking", "Bewolking"], ["thermiek", "Thermiek"], ["temp", "Temperatuur"]];
+  const OROWS = [["wind", "Wind"], ["baan", "Baan"], ["neerslag", "Neerslag"], ["bewolking", "Bewolking"], ["thermiek", "Thermiek"], ["temp", "Temperatuur"], ["kansen", "Kansen"]];
 
   function renderOutlook(json) {
     const dagen = Array.isArray(json && json.dagen) ? json.dagen : [];
