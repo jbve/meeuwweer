@@ -131,6 +131,7 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
 .ocard dt { font-family: var(--font-display); font-weight: 600; font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); padding-top: 1px; }
 .ocard dd { margin: 0; min-width: 0; }
 .zeker { font-family: var(--font-data); font-size: 12px; color: var(--muted); }
+.onzeker { font-size: 13px; font-weight: 600; color: var(--amber); background: var(--amber-bg); border-radius: 4px; padding: 3px 8px; justify-self: start; }
 
 .state { padding: 28px 20px; text-align: center; color: var(--muted); }
 .state strong { display: block; color: var(--fg); font-family: var(--font-display); font-size: 22px; letter-spacing: .02em; margin-bottom: 4px; }
@@ -338,11 +339,14 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
     toon.forEach((x) => {
       const k = ["rood", "oranje", "groen"].includes(x.kleur) ? x.kleur : "oranje";
       const dag = x.dag || x.datum;
+      const n = Math.round((Date.parse(x.datum) - Date.parse(vandaag)) / 86400000);
+      const onzeker = n >= 4 ? "nog erg onzeker, kan sterk veranderen" : n >= 3 ? "nog onzeker, kan nog veranderen" : "kan nog veranderen";
       box.appendChild(el("div", { class: "panel ocard " + k }, [
         el("div", { class: "ocard-head" }, [
           el("strong", { text: dag.charAt(0).toUpperCase() + dag.slice(1) }),
           el("span", { class: "light " + k, text: OLABEL[k] })
         ]),
+        el("span", { class: "onzeker" }, ["⚠ Over " + n + " dag" + (n === 1 ? "" : "en") + " — " + onzeker]),
         x.zekerheid ? el("span", { class: "zeker", text: "Zekerheid: " + x.zekerheid }) : null,
         x.tekst ? el("p", { text: x.tekst }) : null,
         el("dl", {}, OROWS.filter((r) => x[r[0]]).flatMap((r) => [el("dt", { text: r[1] }), el("dd", { text: x[r[0]] })]))
@@ -350,7 +354,7 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
     });
     let tijd = "";
     try { if (json.gemaakt) tijd = new Date(json.gemaakt).toLocaleString("nl-BE", { weekday: "short", day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Brussels" }); } catch (e) {}
-    $("outlookNote").textContent = "Grove verwachting voor de komende vliegdagen" + (tijd ? " · gemaakt " + tijd : "") + ". De volledige briefing volgt de avond ervoor.";
+    $("outlookNote").textContent = "Grove verwachting, nog niet betrouwbaar genoeg om op te plannen: hoe verder vooruit, hoe onzekerder. Kijk de avond ervoor naar de volledige briefing" + (tijd ? " · gemaakt " + tijd : "") + ".";
     $("outlook").hidden = false;
   }
 
