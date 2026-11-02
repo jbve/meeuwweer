@@ -1,31 +1,31 @@
 {
- "gemaakt": "2026-11-02T18:28:41+01:00",
+ "gemaakt": "2026-11-02T18:55:00+01:00",
  "dagen": [
   {
    "datum": "2026-11-05",
    "dag": "do 5 nov",
-   "kleur": "oranje",
-   "zekerheid": "laag (alleen de weerkaart, geen uurgegevens beschikbaar)",
-   "tekst": "Hogedrukgebied (ongeveer 1035 hPa) boven Groot-Brittannië en de Noordzee houdt het waarschijnlijk droog met weinig wind. In november is laag grijs dek of ochtendmist onder zo'n hoog het grootste risico; dat kan de hele dag blijven hangen.",
-   "wind": "zwak, uit noordoost tot oost (schatting kaart)",
-   "baan": "05 (of variabel/licht)",
-   "neerslag": "waarschijnlijk droog",
-   "bewolking": "kans op laag grijs dek of mist, basis onbekend",
-   "thermiek": "geen tot zwak",
-   "temp": "rond 6–8 °C (kaartschatting)"
+   "kleur": "groen",
+   "zekerheid": "matig (één modelbron, 3 dagen vooruit)",
+   "tekst": "Hogedruk met droge oostnoordoostelijke wind: waarschijnlijk zonnig en helder de hele dag. Mistkans klein, omdat de wind ook 's nachts rond 8 kt blijft.",
+   "wind": "oostnoordoost, rond 8 kt",
+   "baan": "05",
+   "neerslag": "droog",
+   "bewolking": "onbewolkt tot enkele wolken",
+   "thermiek": "zwak (zon, maar koude novemberlucht)",
+   "temp": "max 9 °C, ochtend 3 °C"
   },
   {
    "datum": "2026-11-06",
    "dag": "vr 6 nov",
    "kleur": "oranje",
-   "zekerheid": "laag (alleen de weerkaart, geen uurgegevens beschikbaar)",
-   "tekst": "Het hoog schuift naar Midden-Europa (ongeveer 1030 hPa), nog altijd droog en rustig. Boven Noord-Frankrijk staat mist op de kaart: mist of laag dek dat traag oplost is het slechtste scenario.",
-   "wind": "zwak, richting onzeker (oost tot zuidoost)",
+   "zekerheid": "matig (één modelbron, 4 dagen vooruit)",
+   "tekst": "Heldere, bijna windstille nacht: reële kans op ochtendmist en rijp op de vleugels, vermoedelijk opgelost rond 10–11 u. Daarna zonnig; 's avonds komt er bewolking aan.",
+   "wind": "zwak, oost tot oostnoordoost 3–5 kt",
    "baan": "variabel/licht",
-   "neerslag": "waarschijnlijk droog",
-   "bewolking": "kans op mist en laag grijs dek, basis onbekend",
-   "thermiek": "geen tot zwak",
-   "temp": "rond 6–8 °C (kaartschatting)"
+   "neerslag": "droog",
+   "bewolking": "ochtendmist mogelijk, daarna onbewolkt; vanaf de avond meer bewolking",
+   "thermiek": "zwak",
+   "temp": "max 9 °C, ochtend 1 °C"
   }
  ]
 }
