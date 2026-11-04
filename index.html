@@ -149,7 +149,7 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
   </header>
 
   <div id="main">
-    <div class="panel state"><strong>Briefing wordt geladen</strong>De briefing verschijnt de avond voor elke vliegdag rond 18:15, met een update op de vliegdag zelf rond 08:15.</div>
+    <div class="panel state"><strong>Briefing wordt geladen</strong>De briefing verschijnt de dag voor elke vliegdag rond 08:15, wordt die avond rond 18:15 bijgewerkt en krijgt een laatste update op de vliegdag zelf rond 08:15.</div>
   </div>
 
   <section class="outlook" id="outlook" hidden>
@@ -236,7 +236,7 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
       $("title").textContent = "Meeuw Weerbriefing";
       main.appendChild(el("div", { class: "panel state" }, [
         el("strong", { text: "Geen briefing voor vandaag" }),
-        "De volgende briefing verschijnt de avond voor de volgende vliegdag rond 18:15."
+        "De volgende briefing verschijnt de dag voor de volgende vliegdag rond 08:15."
       ]));
       historyList(null);
       $("history").hidden = briefings.length < 1;
@@ -249,10 +249,11 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
     facts.textContent = "";
     let tijd = "";
     try { if (d.gemaakt) tijd = new Date(d.gemaakt).toLocaleString("nl-BE", { weekday: "short", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Brussels" }); } catch (e) {}
-    const soort = d.update === "ochtend" ? "Ochtendupdate" : d.update === "middag" ? "Middagupdate" : "Avondbriefing";
+    const soort = d.update === "ochtend" ? "Ochtendupdate" : d.update === "middag" ? "Middagupdate" : d.update === "vooraf" ? "Briefing dag ervoor" : "Avondbriefing";
     facts.appendChild(el("span", {}, [soort + " ", el("b", { text: tijd || "–" })]));
     facts.appendChild(el("span", {}, ["Zon ", el("b", { text: (d.zonOp || "?") + "–" + (d.zonOnder || "?") })]));
-    if (d.update !== "ochtend" && d.update !== "middag") facts.appendChild(el("span", {}, ["Volgende update ", el("b", { text: (d.dag ? d.dag.split(" ")[0] + " " : "") + "± 08:15" })]));
+    if (d.update === "vooraf") facts.appendChild(el("span", {}, ["Volgende update ", el("b", { text: "vanavond ± 18:15" })]));
+    else if (d.update !== "ochtend" && d.update !== "middag") facts.appendChild(el("span", {}, ["Volgende update ", el("b", { text: (d.dag ? d.dag.split(" ")[0] + " " : "") + "± 08:15" })]));
     else facts.appendChild(el("span", {}, [el("b", { text: "Laatste update" })]));
     if (d.baan) facts.appendChild(el("span", { class: "rwy", text: "RWY " + d.baan }));
 
@@ -359,7 +360,7 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
     const nu = new Date();
     const uurNu = Number(nu.toLocaleString("en-GB", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "Europe/Brussels" }).replace(":", "."));
     const volgende = uurNu < 18.15 ? "vandaag rond 18:15" : "morgen rond 18:15";
-    $("outlookNote").textContent = "Grove verwachting, nog niet betrouwbaar genoeg om op te plannen: hoe verder vooruit, hoe onzekerder. Kijk de avond ervoor naar de volledige briefing.";
+    $("outlookNote").textContent = "Grove verwachting, nog niet betrouwbaar genoeg om op te plannen: hoe verder vooruit, hoe onzekerder. De volledige briefing verschijnt de dag ervoor rond 08:15.";
     $("outlookUpd").textContent = "Bijgewerkt " + (tijd || "–") + " · volgende update " + volgende;
     $("outlook").hidden = false;
   }
