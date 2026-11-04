@@ -134,6 +134,15 @@ td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; whit
 .zeker { font-family: var(--font-data); font-size: 12px; color: var(--muted); }
 .onzeker { font-size: 13px; font-weight: 600; color: var(--amber); background: var(--amber-bg); border-radius: 4px; padding: 3px 8px; justify-self: start; }
 
+.dagtabs { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; }
+.dagtabs button { font: inherit; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 2px 8px; padding: 8px 10px; border-radius: 6px; border: 1px solid var(--line); background: var(--surface); color: var(--fg); cursor: pointer; font-family: var(--font-display); font-weight: 600; font-size: 17px; letter-spacing: .02em; }
+.dagtabs button small { flex-basis: 100%; text-align: center; font-family: var(--font-data); font-weight: 400; font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.dagtabs button[aria-current="true"] { border: 2px solid var(--accent); padding: 7px 9px; }
+.dagtabs button:focus-visible, .dagtabs button:hover { outline: 2px solid var(--accent); outline-offset: 1px; }
+.dagtabs .dagcheck { display: inline-flex; align-items: center; justify-content: center; width: 20px; height: 20px; border-radius: 50%; font-size: 13px; color: #fff; }
+.dagtabs .dagcheck.groen { background: var(--green); }
+.dagtabs .dagcheck.oranje { background: var(--amber); }
+.dagtabs .dagcheck.rood { background: var(--red); }
 h1 .dagcheck { display: inline-flex; align-items: center; justify-content: center; width: .9em; height: .9em; border-radius: 50%; font-size: .7em; margin-left: .35em; vertical-align: .08em; color: #fff; }
 h1 .dagcheck.groen { background: var(--green); }
 h1 .dagcheck.oranje { background: var(--amber); }
@@ -151,6 +160,8 @@ h1 .dagcheck.rood { background: var(--red); }
     </div>
     <div class="facts" id="facts"></div>
   </header>
+
+  <nav class="dagtabs" id="dagtabs" aria-label="Kies de dag" hidden></nav>
 
   <div id="main">
     <div class="panel state"><strong>Briefing wordt geladen</strong>De briefing verschijnt de dag voor elke vliegdag rond 08:15, wordt die avond rond 18:15 bijgewerkt en krijgt een laatste update op de vliegdag zelf rond 08:15.</div>
@@ -231,6 +242,29 @@ h1 .dagcheck.rood { background: var(--red); }
     return ["rood", "Zweefvliegweer: nee", "✕"];
   }
 
+  // Knoppen Vandaag / Morgen / … voor alle briefings vanaf vandaag (alleen als er meer dan één is).
+  function dagTabs(actief) {
+    const nav = $("dagtabs");
+    nav.textContent = "";
+    const vandaag = new Date().toLocaleDateString("sv-SE", { timeZone: "Europe/Brussels" });
+    const komend = briefings.filter((x) => x.id >= vandaag).sort((a, b) => (a.id < b.id ? -1 : 1));
+    if (komend.length < 2) { nav.hidden = true; return; }
+    komend.forEach((x) => {
+      const n = Math.round((Date.parse(x.id) - Date.parse(vandaag)) / 86400000);
+      const wanneer = n === 0 ? "Vandaag" : n === 1 ? "Morgen" : "Over " + n + " dagen";
+      const dag = x.data.dag || x.id;
+      const dk = dagKleur(x.data.blokken);
+      const btn = el("button", { type: "button", "aria-current": String(x.id === actief) }, [
+        el("small", { text: wanneer }),
+        dag.charAt(0).toUpperCase() + dag.slice(1),
+        dk ? el("span", { class: "dagcheck " + dk[0], title: dk[1], "aria-label": dk[1], text: dk[2] }) : null
+      ]);
+      btn.addEventListener("click", () => { selected = x.id; render(); });
+      nav.appendChild(btn);
+    });
+    nav.hidden = false;
+  }
+
   function historyList(actief) {
     const list = $("historyList");
     list.textContent = "";
@@ -253,6 +287,7 @@ h1 .dagcheck.rood { background: var(--red); }
         "De volgende briefing verschijnt de dag voor de volgende vliegdag rond 08:15."
       ]));
       historyList(null);
+      dagTabs(null);
       $("history").hidden = briefings.length < 1;
       return;
     }
@@ -339,6 +374,7 @@ h1 .dagcheck.rood { background: var(--red); }
     ]));
 
     historyList(b.id);
+    dagTabs(b.id);
     $("history").hidden = briefings.length < 2;
   }
 
