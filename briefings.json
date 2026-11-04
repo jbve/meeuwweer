@@ -3,45 +3,45 @@
   {
    "datum": "2026-11-05",
    "dag": "do 5 nov",
-   "update": "vooraf",
+   "update": "avond",
    "zonOp": "07:40",
    "zonOnder": "17:07",
    "baan": "05",
-   "synoptisch": "Een hogedrukgebied van ongeveer 1035 hPa ligt boven de Noordzee en Denemarken en blijft morgen boven de Noordzee liggen. Fronten blijven ver weg boven de Atlantische Oceaan en Scandinavië. Oost-noordoostelijke stroming met droge, koele landlucht: veel zon, maar stabiele lucht onder een inversie rond 500 m.",
-   "kort": "Beter dan het vooruitzicht van dinsdagavond: alle modellen geven nu een droge dag zonder laag grijs dek, en de vlagen blijven rond 15 kt in plaats van 21 kt. Zweefvliegweer goed van ongeveer 10 u tot zonsondergang (17:07) op baan 05; vroeg in de ochtend blijft een kleine kans op een laag dek rond 200–250 m. Geen thermiek: de koude, stabiele lucht blijft onder een inversie rond 500 m.",
+   "synoptisch": "Een krachtig hogedrukgebied van ruim 1035 hPa ligt boven de Noordzee en schuift morgen nauwelijks op; fronten blijven ver weg boven de Atlantische Oceaan en Scandinavië. Oostelijke stroming met droge, koele landlucht: zonnig en droog, maar stabiele lucht onder een inversie rond 500 m.",
+   "kort": "Weinig wijziging sinds vanochtend: nog steeds een droge, zonnige dag op baan 05, en de kans op rijp is kleiner (ochtendminimum 2,5 °C). Zweefvliegweer van ongeveer 10 u tot zonsondergang (17:07); tot ongeveer 10 u houdt één model een laag grijs dek rond 200 m vast, en rond 12–13 u kan de zijwind in vlagen tot 13 kt oplopen. Geen thermiek: de stabiele lucht blijft onder een inversie rond 500 m.",
    "blokken": [
     {
      "blok": "09–11",
-     "basis": "1200–1350 m, half tot zwaar bewolkt; tot ± 9:30–10 u kans op laag dek rond 200–250 m",
-     "zicht": ">10 km (vroeg mogelijk 7 km)",
-     "wind": "070°/6 (14)",
-     "xwind": "05 · 2 (5)",
+     "basis": "200 m zwaar bewolkt (slechtste model, tot ± 10 u) → enkele wolken; mogelijk 1200 m half bewolkt",
+     "zicht": ">10 km",
+     "wind": "070°/7 (14)",
+     "xwind": "05 · 3 (6)",
      "regen": "droog",
      "thermiek": "geen",
      "sleep": {
-      "van": "oranje",
-      "naar": "groen",
-      "om": "10 u"
+      "van": "oranje"
      }
     },
     {
      "blok": "11–13",
-     "basis": "1200–1350 m, half bewolkt, breekt open",
+     "basis": "geen lage bewolking; mogelijk 1200 m half bewolkt",
      "zicht": ">10 km",
      "wind": "080°/7 (15)",
-     "xwind": "05 · 3 (8)",
+     "xwind": "05 · 4 (9)",
      "regen": "droog",
      "thermiek": "geen",
      "sleep": {
-      "van": "groen"
+      "van": "groen",
+      "naar": "oranje",
+      "om": "12 u"
      }
     },
     {
      "blok": "13–15",
-     "basis": "hooguit enkele wolken",
+     "basis": "geen lage bewolking; mogelijk 1200 m half bewolkt",
      "zicht": ">10 km",
-     "wind": "085°/6 (15)",
-     "xwind": "05 · 3 (8)",
+     "wind": "080°/6 (14)",
+     "xwind": "05 · 3 (7)",
      "regen": "droog",
      "thermiek": "geen",
      "sleep": {
@@ -50,9 +50,9 @@
     },
     {
      "blok": "15–17:07",
-     "basis": "hooguit enkele wolken",
+     "basis": "geen lage bewolking; mogelijk 1200 m half bewolkt",
      "zicht": ">10 km",
-     "wind": "075°/5 (11)",
+     "wind": "080°/5 (12)",
      "xwind": "05 · 2 (5)",
      "regen": "droog",
      "thermiek": "geen",
@@ -64,31 +64,30 @@
    "meteo": {
     "temp": "max 11 °C (rond 15 u)",
     "dauwpunt": "2–5 °C",
-    "kritisch": "17 °C — wordt niet gehaald (max 11 °C), geen thermiek",
-    "vriesniveau": "2600 m",
-    "qnh": "1027 hPa, licht dalend (−2 hPa tot 17 u)",
-    "waarschuwing": "Kans op rijp op de vleugels: voor de start controleren (ochtend rond 2–3 °C na een heldere nacht)"
+    "kritisch": "18 °C — wordt niet gehaald (max 11 °C), geen thermiek",
+    "vriesniveau": "2700 m",
+    "qnh": "1027 hPa, dalend (−2 hPa tot 17 u)"
    },
-   "modellen": "Eens over een droge, zonnige dag met een oost-noordoostenwind rond 6–7 kt en vlagen van 14–16 kt. Eén model geeft tussen 5 en 9:30 u een laag wolkendek rond 150–250 m (slechtste scenario: start pas vanaf ongeveer 10 u), en ook een luchthavenverwachting houdt 30 % kans op een dek rond 250 m tot 9 u; de andere modellen blijven onbewolkt. Twee luchthavenverwachtingen geven in de ochtend een half tot gesloten wolkendek rond 1200–1350 m (zoals vandaag), wat de modellen niet tonen; voor slepen is dat geen probleem.",
+   "modellen": "Eens over een droge, zonnige dag met een oostenwind rond 6–7 kt en vlagen van 12–16 kt. Eén model geeft tot ongeveer 10 u een laag grijs dek rond 200 m (slechtste scenario: start pas vanaf ongeveer 10 u); de andere vier bronnen blijven helder, daarom oranje in plaats van rood. Eén model geeft rond 12 u zijwind in vlagen tot 13 kt, de andere 5–10 kt. Een luchthavenverwachting houdt een half bewolkt dek rond 1200 m aan; voor slepen geen probleem.",
    "overland": {
     "kleur": "rood",
-    "tekst": "Geen overland: veel zon, maar de koude, stabiele lucht laat de thermiek niet boven ongeveer 500 m komen en het netto stijgen blijft rond nul.",
+    "tekst": "Geen overland: veel zon, maar de koele, stabiele lucht laat de thermiek niet boven ongeveer 500 m komen en het netto stijgen blijft rond nul.",
     "venster": "geen",
     "netto": "hooguit +0,1 m/s rond 12–13:30 u",
     "werkhoogte": "hooguit 500 m (inversie)",
-    "type": "blauw (droge thermiek), te zwak",
-    "uitspreiding": "laag; in de ochtend mogelijk een wolkendek rond 1200 m dat in de middag openbreekt",
-    "buien": "laag; geen onweer, droog",
+    "type": "blauw, te zwak",
+    "uitspreiding": "laag",
+    "buien": "geen; droog, geen onweer",
     "bovenbewolking": "geen",
-    "windHoogte": "oost-zuidoost 24 kt in de ochtend, afnemend tot 14 kt rond 16 u"
+    "windHoogte": "oost-zuidoost 24 kt om 9 u, afnemend tot 15 kt om 17 u"
    },
    "bijzonderheden": [
-    "Tot ongeveer 9:30–10 u kans op een laag grijs dek rond 200–250 m (één model en de luchthavenverwachting van Brussel); mist is weinig waarschijnlijk door de wind.",
-    "Kans op rijp op de vleugels in de ochtend: voor de start controleren.",
-    "Wind op 1500 m in de ochtend rond 24 kt uit het oost-zuidoosten: aan de hoge kant voor een lange sleep, neemt in de middag af tot ongeveer 14 kt."
+    "Tot ongeveer 10 u kans op een laag grijs dek rond 200 m (één model).",
+    "Rond 12–13 u zijwind in vlagen tot 13 kt op baan 05 (één model).",
+    "Wind op 1500 m in de ochtend rond 24 kt uit het oost-zuidoosten, neemt af tot 15 kt rond 17 u."
    ],
-   "bronnen": "Briefing dag ervoor (geplande run 10:53, vervangt de handmatige versie van 09:58) · METAR (wo 4 nov, weerbeeld van nu) EBAW 0920Z, EBBR 0920Z, EHEH 0925Z: dek rond 1100 m, oostnoordoost 9–10 kt · TAF EBBR 040500Z en EHEH 040521Z (dekken do tot 13 u), EBAW 040800Z dekt do niet · Open-Meteo best match + ICON-D2/ECMWF/AROME (opgehaald 10:51) · MET Norway updated_at 2026-11-04T09:17Z · BLIPMAP NL4KMGFS Produced on 04 Nov 2026 05:07 CET, NL4KMICON Produced on 04 Nov 2026 06:26 CET · DWD bodemanalyse wo 4 nov 06 UTC, DWD ICON-verwachting do 5 nov 12 UTC (run 4 nov 00 UTC +36 u).",
-   "gemaakt": "2026-11-04T10:52:44+01:00"
+   "bronnen": "Avondbriefing · METAR EBAW 1650Z, EBBR 1650Z, EHEH 1655Z · TAF EBAW 041400Z (dekt do niet), EBBR 041100Z, EHEH 041129Z · Open-Meteo best match + ICON-D2/ECMWF/AROME: ok · ensemble: ok · MET Norway updated_at 2026-11-04T13:18:33Z · BLIPMAP NL4KMGFS Produced on 04 Nov 2026 05:07 CET, NL4KMICON Produced on 04 Nov 2026 06:26 CET · DWD bodemanalyse wo 4 nov 12 UTC, DWD ICON-verwachting do 5 nov 12 UTC (+36 u), vr 6 nov 12 UTC (+60 u), za 7 nov 12 UTC (+84 u).",
+   "gemaakt": "2026-11-04T18:22:00+01:00"
   },
   {
    "datum": "2026-11-01",
