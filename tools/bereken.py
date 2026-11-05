@@ -23,6 +23,18 @@ MNAAM = {"best": "Open-Meteo best match", "icon_d2": "ICON-D2", "ecmwf_ifs025": 
 BLOKKEN = [("09–11", [9, 10]), ("11–13", [11, 12]), ("13–15", [13, 14]), ("15–", [15, 16])]
 T0 = time.time()
 LOG = []
+HOOGTE = {}  # reserve: DWD ICON-D2 hoogtegegevens per uur (lokaal) als Open-Meteo faalt
+HKEYS = ("t925", "t850", "z925", "z850", "fz", "w85", "d85")
+
+
+def aanvul(r, dt):
+    """Vul ontbrekende hoogtegegevens aan uit HOOGTE."""
+    r = dict(r or {})
+    h = HOOGTE.get(dt, {})
+    for k in HKEYS:
+        if r.get(k) is None and h.get(k) is not None:
+            r[k] = h[k]
+    return r
 
 
 def log(s):
@@ -231,6 +243,90 @@ def reeks_mosmix(pad):
     return uit, uitgifte
 
 
+def haal_icond2(dagen, map_):
+    """DWD ICON-D2 (regular-lat-lon) voor EBZR: t/fi 925+850 en hzerocl om 13 u, wind 850 om 9/13/17 u lokaal."""
+    try:
+        import eccodes
+    except ImportError:
+        r = subprocess.run([sys.executable, "-m", "pip", "install", "-q", "--break-system-packages", "eccodes"], capture_output=True, text=True)
+        try:
+            import eccodes
+        except ImportError:
+            return "eccodes niet installeerbaar: " + (r.stderr.strip()[-120:] or "?")
+    import bz2
+    B = "https://opendata.dwd.de/weather/nwp/icon-d2/grib"
+    nu = datetime.now(timezone.utc)
+    run = None
+    for terug in range(0, 5):
+        k = (nu - timedelta(hours=2, minutes=30) - timedelta(hours=3 * terug))
+        k = k.replace(hour=k.hour - k.hour % 3, minute=0, second=0, microsecond=0)
+        rs = k.strftime("%Y%m%d%H")
+        ok, _, _ = curl(f"{B}/{k:%H}/hzerocl/icon-d2_germany_regular-lat-lon_single-level_{rs}_000_2d_hzerocl.grib2.bz2", out=os.path.join(map_, "icond2_test.bz2"), pogingen=1)
+        if os.path.exists(os.path.join(map_, "icond2_test.bz2")):
+            os.remove(os.path.join(map_, "icond2_test.bz2"))
+        if ok:
+            run = k
+            break
+    if not run:
+        return "geen recente run gevonden"
+    rs = run.strftime("%Y%m%d%H")
+
+    def waarde(var, niveau, step, single=False):
+        naam = (f"icon-d2_germany_regular-lat-lon_single-level_{rs}_{step:03d}_2d_{var}.grib2.bz2" if single
+                else f"icon-d2_germany_regular-lat-lon_pressure-level_{rs}_{step:03d}_{niveau}_{var}.grib2.bz2")
+        pad = os.path.join(map_, naam)
+        ok, _, f = curl(f"{B}/{run:%H}/{var}/{naam}", out=pad, pogingen=2)
+        try:
+            if not ok:
+                return None
+            data = bz2.decompress(open(pad, "rb").read())
+            g = eccodes.codes_new_from_message(data)
+            v = eccodes.codes_grib_find_nearest(g, LAT, LON)[0]["value"]
+            eccodes.codes_release(g)
+            return v
+        except Exception:
+            return None
+        finally:
+            if os.path.exists(pad):
+                os.remove(pad)
+
+    # ICON-D2 heeft geen 925 hPa: onderste niveau = 950 hPa (± 550 m); opgeslagen onder t925/z925.
+    taken = []
+    for dag in dagen:
+        for uur in (9, 13, 17):
+            dt = datetime.combine(dag, datetime.min.time()).replace(tzinfo=TZ) + timedelta(hours=uur)
+            step = int((dt.astimezone(timezone.utc) - run).total_seconds() // 3600)
+            if step < 0 or step > 48:
+                continue
+            taken += [(dt, "u", ("u", 850, step)), (dt, "v", ("v", 850, step))]
+            if uur == 13:
+                taken += [(dt, "t925", ("t", 950, step)), (dt, "t850", ("t", 850, step)),
+                          (dt, "z925", ("fi", 950, step)), (dt, "z850", ("fi", 850, step)),
+                          (dt, "fz", ("hzerocl", None, step, True))]
+    from concurrent.futures import ThreadPoolExecutor
+    with ThreadPoolExecutor(max_workers=6) as ex:
+        res = list(ex.map(lambda t: (t[0], t[1], waarde(*t[2])), taken))
+    ruw = {}
+    for dt, k, v in res:
+        if v is not None:
+            ruw.setdefault(dt, {})[k] = v
+    n = 0
+    for dt, r in ruw.items():
+        h = {}
+        if "u" in r and "v" in r:
+            h["w85"] = math.hypot(r["u"], r["v"]) * 1.944
+            h["d85"] = (math.degrees(math.atan2(-r["u"], -r["v"])) + 360) % 360
+        if "t925" in r: h["t925"] = r["t925"] - 273.15
+        if "t850" in r: h["t850"] = r["t850"] - 273.15
+        if "z925" in r: h["z925"] = r["z925"] / 9.80665
+        if "z850" in r: h["z850"] = r["z850"] / 9.80665
+        if "fz" in r: h["fz"] = r["fz"]
+        if h:
+            HOOGTE[dt] = h
+            n += 1
+    return f"ok (run {run:%d-%m %H} UTC, {n} tijdstippen)" if n else "geen gegevens"
+
+
 def basis(r):
     if r.get("T") is None or r.get("Td") is None or r.get("L") is None:
         return None
@@ -361,15 +457,17 @@ def briefingdag(dag, typ, R, daily):
     # METEO uit best match (of MET Norway)
     bron = "best" if R.get("best") else "metno"
     rs = R.get(bron, {})
-    dag_uren = [(h, rs.get(uren[h])) for h in range(9, 18) if rs.get(uren[h])]
+    dag_uren = [(h, aanvul(rs.get(uren[h]), uren[h])) for h in range(9, 18) if rs.get(uren[h])]
     meteo = {"bron": MNAAM[bron]}
+    if bron != "best" and HOOGTE:
+        meteo["bron"] += " + DWD ICON-D2 (hoogte)"
     if dag_uren:
         Tmax = max(dag_uren, key=lambda x: x[1]["T"] if x[1]["T"] is not None else -99)
         meteo["temp"] = f"max {rnd(daily.get(dag.isoformat(), {}).get('tmax', Tmax[1]['T']))} °C (rond {Tmax[0]} u)"
         tds = [r["Td"] for _, r in dag_uren if r.get("Td") is not None]
         spreid = [r["T"] - r["Td"] for _, r in dag_uren if r.get("T") is not None and r.get("Td") is not None]
         meteo["dauwpunt"] = f"{rnd(min(tds))}–{rnd(max(tds))} °C" + (", verschil met temperatuur blijft < 2 °C" if spreid and max(spreid) < 2 else "")
-        r13 = rs.get(uren[13]) or {}
+        r13 = aanvul(rs.get(uren[13]), uren[13])
         if r13.get("t925") is not None and r13.get("t850") is not None and r13.get("z925") and r13.get("z850"):
             t1015 = r13["t925"] + (r13["t850"] - r13["t925"]) * (1015 - r13["z925"]) / (r13["z850"] - r13["z925"])
             krit = rnd(t1015 + 9.8 + 1)
@@ -378,7 +476,7 @@ def briefingdag(dag, typ, R, daily):
             meteo["kritisch"] = f"{krit} °C — " + (f"gehaald rond {gehaald} u" if gehaald else f"wordt niet gehaald (max {rnd(Tm)} °C), geen thermiek")
             if r13["t850"] > r13["t925"]:
                 meteo["kritisch"] += f"; inversie tussen ongeveer {r50(r13['z925'])} en {r50(r13['z850'])} m"
-            meteo["t925_t850_13u"] = [r13["t925"], r13["t850"]]
+            meteo["t_onder_boven_13u"] = [round(r13["t925"], 1), round(r13["t850"], 1)]
         else:
             meteo["kritisch"] = "onbekend (gegevens niet beschikbaar)"
         meteo["vriesniveau"] = f"{int(round(r13['fz'] / 100.0) * 100)} m" if r13.get("fz") else "onbekend (gegevens niet beschikbaar)"
@@ -496,6 +594,7 @@ def main():
     ap.add_argument("--briefing", default="", help="DATUM:type[,DATUM:type]")
     ap.add_argument("--vooruitzicht", default="", help="DATUM[,DATUM]")
     ap.add_argument("--uit", required=True)
+    ap.add_argument("--test-zonder-openmeteo", action="store_true", help="alleen voor testen: doe alsof Open-Meteo de daglimiet heeft")
     a = ap.parse_args()
     os.makedirs(a.uit, exist_ok=True)
     vandaag = datetime.now(TZ).date()
@@ -513,7 +612,9 @@ def main():
             "https://api.open-meteo.com/v1/forecast?latitude=51.2647&longitude=4.7533&hourly=temperature_2m,dew_point_2m,cloud_cover_low,cloud_cover_mid,cloud_cover_high,cloud_cover,visibility,wind_speed_10m,wind_direction_10m,wind_gusts_10m,wind_speed_850hPa,wind_direction_850hPa,boundary_layer_height,cape,lifted_index,shortwave_radiation,precipitation,precipitation_probability,pressure_msl,freezing_level_height,temperature_925hPa,temperature_850hPa,geopotential_height_925hPa,geopotential_height_850hPa&daily=sunrise,sunset,temperature_2m_max&timezone=Europe/Brussels"
             + f"&start_date={s}&end_date={e}", "Open-Meteo best match")
         j1b = None
-        if status["openmeteo"] != "daglimiet":
+        if a.test_zonder_openmeteo:
+            j1a, status["openmeteo"] = None, "daglimiet (test)"
+        if not status["openmeteo"].startswith("daglimiet"):
             j1b, st1b = jhaal(
                 "https://api.open-meteo.com/v1/forecast?latitude=51.2647&longitude=4.7533&hourly=temperature_2m,dew_point_2m,cloud_cover_low,cloud_cover_mid,cloud_cover_high,visibility,wind_speed_10m,wind_direction_10m,wind_gusts_10m,cape,shortwave_radiation,precipitation&models=icon_d2,ecmwf_ifs025,meteofrance_arome_france_hd&timezone=Europe/Brussels"
                 + f"&start_date={s}&end_date={e}", "Open-Meteo modelvergelijking")
@@ -540,6 +641,9 @@ def main():
                 daily[t] = {"sunrise": j1a["daily"]["sunrise"][i][11:16], "sunset": j1a["daily"]["sunset"][i][11:16], "tmax": j1a["daily"]["temperature_2m_max"][i]}
         R = {}
         if j1a: R["best"] = reeks_openmeteo(j1a["hourly"])
+        else:
+            status["icond2_hoogte"] = haal_icond2([d for d, _ in bdagen], a.uit)
+            log("DWD ICON-D2 hoogte: " + status["icond2_hoogte"])
         if j1b:
             for m in MODELLEN:
                 rs = reeks_openmeteo(j1b["hourly"], "_" + m)
