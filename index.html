@@ -57,7 +57,7 @@ th { font-family: var(--font-display); font-weight: 600; font-size: 14px; letter
 td { padding: 12px; border-bottom: 1px solid var(--line); vertical-align: top; }
 tr:last-child td { border-bottom: 0; }
 td.blok { font-family: var(--font-data); font-weight: 500; white-space: nowrap; }
-td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; white-space: nowrap; font-size: 14px; }
+td.num { font-family: var(--font-data); font-variant-numeric: tabular-nums; font-size: 14px; }
 
 .light { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-display); font-weight: 700; font-size: 15px; letter-spacing: .05em; text-transform: uppercase; padding: 3px 10px 3px 8px; border-radius: 999px; white-space: nowrap; }
 .light::before { content: ""; width: 10px; height: 10px; border-radius: 50%; background: currentColor; }
@@ -217,9 +217,20 @@ h1 .dagcheck.rood { background: var(--red); }
     return wrap;
   }
   const COLS = [
-    ["basis", "Basis"], ["zicht", "Zicht"], ["wind", "Wind (vlagen) kt"],
-    ["xwind", "Baan · X-wind kt"], ["regen", "Regen"], ["thermiek", "Thermiek (netto)"]
+    ["basis", "Basis"], ["zicht", "Zicht"], ["wind", "Wind"],
+    ["xwind", "Baan · zijwind"], ["regen", "Regen"], ["thermiek", "Thermiek (netto)"]
   ];
+  // "05 · 3 (5)" → "RWY 05 · 3 kt cross (vlagen 5 kt)"; "070°/8 (14)" → "070° · 8 kt (vlagen 14 kt)". Onbekende vormen blijven ongewijzigd.
+  const NB = "\u00a0";
+  const vlaag = (g) => (g && /^\d+$/.test(g.trim()) ? " (vlagen" + NB + g.trim() + NB + "kt)" : "");
+  function fmt(k, v) {
+    if (!v) return "–";
+    let m;
+    if (k === "xwind" && (m = /^\s*(\d\d)\s*·\s*(\d+)\s*(?:\(([^)]*)\))?\s*$/.exec(v))) return "RWY" + NB + m[1] + " · " + m[2] + NB + "kt" + NB + "cross" + vlaag(m[3]);
+    if (k === "wind" && (m = /^\s*(\d{3})°\/(\d+)\s*(?:\(([^)]*)\))?\s*$/.exec(v))) return m[1] + "°" + NB + "·" + NB + m[2] + NB + "kt" + vlaag(m[3]);
+    if (k === "wind" && (m = /^\s*variabel\/licht\s*(?:\(([^)]*)\))?\s*$/.exec(v))) return "variabel/licht" + vlaag(m[1]);
+    return v;
+  }
 
   // Standaard: briefing van vandaag; vanaf 18 u die van morgen als die er al is. Oude briefings alleen via "Vorige briefings".
   function huidige() {
@@ -312,12 +323,12 @@ h1 .dagcheck.rood { background: var(--red); }
     const table = el("table", {}, [
       el("thead", {}, [el("tr", {}, [el("th", { text: "Blok" })].concat(COLS.map((c) => el("th", { text: c[1] }))).concat([el("th", { text: "Zweefvliegweer" })]))]),
       el("tbody", {}, blokken.map((r) => el("tr", {}, [el("td", { class: "blok", text: r.blok || "" })]
-        .concat(COLS.map((c) => el("td", { class: ["wind", "xwind"].includes(c[0]) ? "num" : "", text: r[c[0]] || "–" })))
+        .concat(COLS.map((c) => el("td", { class: ["wind", "xwind"].includes(c[0]) ? "num" : "", text: fmt(c[0], r[c[0]]) })))
         .concat([el("td", {}, [sleepCell(r.sleep)])]))))
     ]);
     const cards = el("div", { class: "cards" }, blokken.map((r) => el("div", { class: "panel card" }, [
       el("div", { class: "card-head" }, [el("span", { class: "blok", text: r.blok || "" }), sleepCell(r.sleep)]),
-      el("dl", {}, COLS.flatMap((c) => [el("dt", { text: c[1] }), el("dd", { text: r[c[0]] || "–" })]))
+      el("dl", {}, COLS.flatMap((c) => [el("dt", { text: c[1] }), el("dd", { text: fmt(c[0], r[c[0]]) })]))
     ])));
 
     const v = (titel, kleur, tekst) => el("div", { class: "verdict" }, [

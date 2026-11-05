@@ -19,7 +19,7 @@ UA = "MeeuwWeerbriefing/1.0 github.com/jbve/meeuwweer"
 BAAN = 50  # 05/23
 MODELLEN = ["icon_d2", "ecmwf_ifs025", "meteofrance_arome_france_hd"]
 MNAAM = {"best": "Open-Meteo best match", "icon_d2": "ICON-D2", "ecmwf_ifs025": "ECMWF IFS",
-         "meteofrance_arome_france_hd": "AROME", "metno": "MET Norway"}
+         "meteofrance_arome_france_hd": "AROME", "metno": "MET Norway", "mosmix": "DWD MOSMIX (Antwerpen-Deurne)"}
 BLOKKEN = [("09–11", [9, 10]), ("11–13", [11, 12]), ("13–15", [13, 14]), ("15–", [15, 16])]
 T0 = time.time()
 LOG = []
@@ -202,6 +202,35 @@ def reeks_metno(j):
     return uit
 
 
+def reeks_mosmix(pad):
+    """DWD MOSMIX_L station 06450 (Antwerpen-Deurne): KMZ → dict uur lokaal → waarden in kt."""
+    import re, zipfile
+    z = zipfile.ZipFile(pad)
+    x = z.read(z.namelist()[0]).decode("utf-8", "replace")
+    uitgifte = (re.findall(r"<dwd:IssueTime>(.*?)<", x) or [""])[0]
+    ts = re.findall(r"<dwd:TimeStep>(.*?)<", x)
+    el = {e: v.split() for e, v in re.findall(r'<dwd:Forecast dwd:elementName="(.*?)">\s*<dwd:value>(.*?)</dwd:value>', x, re.S)}
+
+    def g(k, i, f=lambda v: v):
+        arr = el.get(k)
+        if not arr or i >= len(arr) or arr[i] in ("-", ""):
+            return None
+        try:
+            return f(float(arr[i]))
+        except ValueError:
+            return None
+    uit = {}
+    for i, t in enumerate(ts):
+        dt = datetime.fromisoformat(t.replace(".000Z", "+00:00").replace("Z", "+00:00")).astimezone(TZ)
+        uit[dt] = {
+            "T": g("TTT", i, lambda v: v - 273.15), "Td": g("Td", i, lambda v: v - 273.15),
+            "L": g("Nl", i), "M": g("Nm", i), "H": g("Nh", i), "vis": g("VV", i),
+            "ws": g("FF", i, lambda v: v * 1.944), "gu": g("FX1", i, lambda v: v * 1.944), "wd": g("DD", i),
+            "pr": g("RR1c", i), "pp": g("R101", i), "fog": g("wwM", i), "p": g("PPPP", i, lambda v: v / 100),
+        }
+    return uit, uitgifte
+
+
 def basis(r):
     if r.get("T") is None or r.get("Td") is None or r.get("L") is None:
         return None
@@ -252,6 +281,7 @@ def briefingdag(dag, typ, R, daily):
                     (rood if bb < 300 else oranje if bb < 500 else []).append(f"basis {r50(bb)} m ({MNAAM.get(m, m)})")
                 if r.get("ws") is not None and xw(r["ws"], r.get("wd")) > 12: rood.append("gem. zijwind > 12 kt")
                 if r.get("gu") is not None:
+                    gu.append(r["gu"])
                     if r["gu"] > 25: rood.append("vlagen > 25 kt")
                     elif r["gu"] >= 20: oranje.append("vlagen ≥ 20 kt")
                     if xw(r["gu"], r.get("wd")) > 12: oranje.append("zijwind in vlagen > 12 kt")
@@ -260,7 +290,7 @@ def briefingdag(dag, typ, R, daily):
                 if (r.get("pp") or 0) >= 40: oranje.append("neerslagkans ≥ 40 %")
                 fog = r.get("fog") or 0
                 if fog >= 50: rood.append(f"mist ({MNAAM.get(m, m)}, {rnd(fog)} %)")
-                elif fog > 0: oranje.append(f"kans op mist ({MNAAM.get(m, m)}, {rnd(fog)} %)")
+                elif fog >= 20: oranje.append(f"kans op mist ({MNAAM.get(m, m)}, {rnd(fog)} %)")
                 elif r.get("T") is not None and r.get("Td") is not None and r["T"] - r["Td"] <= 0.5 and (r.get("ws") or 0) < 4:
                     oranje.append(f"kans op mist (temperatuur ≈ dauwpunt, {MNAAM.get(m, m)})")
             if pr >= 1.0: rood.append(f"neerslag ≥ 1 mm ({MNAAM.get(m, m)})")
@@ -490,6 +520,18 @@ def main():
             status["openmeteo_modellen"] = st1b
     jm, status["metno"] = jhaal(f"https://api.met.no/weatherapi/locationforecast/2.0/complete?lat=51.26&lon=4.75", "MET Norway", ua=UA)
     uit["metno_updated_at"] = jm["properties"]["meta"]["updated_at"] if jm else None
+    RM = None
+    pad = os.path.join(a.uit, "mosmix_06450.kmz")
+    ok, _, f = curl("https://opendata.dwd.de/weather/local_forecasts/mos/MOSMIX_L/single_stations/06450/kml/MOSMIX_L_LATEST_06450.kmz", out=pad)
+    if ok:
+        try:
+            RM, uit["mosmix_uitgifte"] = reeks_mosmix(pad)
+            status["mosmix"] = "ok"
+        except Exception as e:
+            status["mosmix"] = "fout: " + str(e)[:100]
+    else:
+        status["mosmix"] = f or "fout"
+    log("DWD MOSMIX: " + status["mosmix"])
 
     if bdagen:
         daily = {}
@@ -504,6 +546,7 @@ def main():
                 if any(v.get("T") is not None for v in rs.values()):
                     R[m] = {k: v for k, v in rs.items() if v.get("T") is not None}
         if jm: R["metno"] = reeks_metno(jm)
+        if RM: R["mosmix"] = RM
         for d, typ in bdagen:
             uit["briefings"].append(briefingdag(d, typ, R, daily))
         uit["bronnen_beschikbaar"] = [MNAAM.get(m, m) for m in R]
@@ -565,6 +608,7 @@ def main():
                 rs = {k: v for k, v in rs.items() if v.get("T") is not None}
                 if rs: Rd[m] = rs
         if jm: Rd["metno"] = reeks_metno(jm)
+        if RM: Rd["mosmix"] = RM
         MNAAM.update({"icon_seamless": "ICON", "gfs_seamless": "GFS"})
         for d in vdagen:
             v = vooruitzichtdag(d, Rd, je)
