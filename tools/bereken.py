@@ -72,6 +72,23 @@ def jhaal(url, naam, ua=None):
     return j, "ok"
 
 
+def zon(dag):
+    """Zon op/onder (NOAA-benadering, ± 1 min) voor EBZR, lokale tijd HH:MM."""
+    n = dag.timetuple().tm_yday
+    g = 2 * math.pi / 365 * (n - 1)
+    eqt = 229.18 * (0.000075 + 0.001868 * math.cos(g) - 0.032077 * math.sin(g) - 0.014615 * math.cos(2 * g) - 0.040849 * math.sin(2 * g))
+    dec = (0.006918 - 0.399912 * math.cos(g) + 0.070257 * math.sin(g) - 0.006758 * math.cos(2 * g) + 0.000907 * math.sin(2 * g)
+           - 0.002697 * math.cos(3 * g) + 0.00148 * math.sin(3 * g))
+    lat = math.radians(LAT)
+    ha = math.degrees(math.acos(math.cos(math.radians(90.833)) / (math.cos(lat) * math.cos(dec)) - math.tan(lat) * math.tan(dec)))
+    uit = []
+    for teken in (1, -1):
+        minuten = 720 - 4 * (LON + teken * ha) - eqt
+        t = datetime.combine(dag, datetime.min.time(), tzinfo=timezone.utc) + timedelta(minutes=minuten)
+        uit.append(t.astimezone(TZ).strftime("%H:%M"))
+    return uit[0], uit[1]
+
+
 def kt(kmh):
     return None if kmh is None else kmh / 1.852
 
@@ -199,8 +216,11 @@ def briefingdag(dag, typ, R, daily):
     """R: dict modelnaam → reeks."""
     d0 = datetime.combine(dag, datetime.min.time()).replace(tzinfo=TZ)
     uren = {h: d0 + timedelta(hours=h) for h in range(0, 24)}
-    zon = daily.get(dag.isoformat(), {})
-    zonder = zon.get("sunset", "17:00")
+    zon = dict(daily.get(dag.isoformat(), {}))
+    if not zon.get("sunset"):
+        zon["sunrise"], zon["sunset"] = globals()["zon"](dag)
+        zon["berekend"] = True
+    zonder = zon["sunset"]
 
     # per uur tabel
     tabel = []
@@ -238,12 +258,20 @@ def briefingdag(dag, typ, R, daily):
                     if r.get("ws") is not None and r["gu"] - r["ws"] >= 10: oranje.append("vlagen ≥ 10 kt boven gemiddelde")
                 pr += r.get("pr") or 0
                 if (r.get("pp") or 0) >= 40: oranje.append("neerslagkans ≥ 40 %")
+                fog = r.get("fog") or 0
+                if fog >= 50: rood.append(f"mist ({MNAAM.get(m, m)}, {rnd(fog)} %)")
+                elif fog > 0: oranje.append(f"kans op mist ({MNAAM.get(m, m)}, {rnd(fog)} %)")
+                elif r.get("T") is not None and r.get("Td") is not None and r["T"] - r["Td"] <= 0.5 and (r.get("ws") or 0) < 4:
+                    oranje.append(f"kans op mist (temperatuur ≈ dauwpunt, {MNAAM.get(m, m)})")
             if pr >= 1.0: rood.append(f"neerslag ≥ 1 mm ({MNAAM.get(m, m)})")
             elif pr > 0: oranje.append(f"lichte neerslag ({MNAAM.get(m, m)})")
         if vis and min(vis) < 1500: rood.append("zicht < 1,5 km")
         elif vis and min(vis) < 5000: oranje.append("zicht < 5 km")
         kleur = "rood" if rood else "oranje" if oranje else "groen"
-        return kleur, sorted(set(rood or oranje))
+        uitleg = sorted(set(rood or oranje))
+        if not gu:
+            uitleg.append("vlagen onbekend (geen bron met vlagen beschikbaar)")
+        return kleur, uitleg
 
     blokken = []
     for naam, hrs in BLOKKEN:
@@ -288,9 +316,9 @@ def briefingdag(dag, typ, R, daily):
         per_uur = {f"{h} u": licht([h])[0] for h in hrs}
         blokken.append({
             "blok": naam, "baan": baan_voor(richting, mws),
-            "wind": (f"{int(round(richting / 10.0) * 10) % 360:03d}°/{rnd(mws)} ({rnd(mgu) if mgu is not None else '–'})" if richting is not None and mws is not None and mws >= 4
-                     else f"variabel/licht ({rnd(mgu) if mgu is not None else '–'})"),
-            "xwind": f"{baan_voor(richting, mws) if baan_voor(richting, mws) != 'variabel/licht' else '05'} · {rnd(mxm)} ({rnd(mxg) if mxg is not None else '–'})",
+            "wind": (f"{int(round(richting / 10.0) * 10) % 360:03d}°/{rnd(mws)} ({rnd(mgu) if mgu is not None else '?'})" if richting is not None and mws is not None and mws >= 4
+                     else f"variabel/licht ({rnd(mgu) if mgu is not None else '?'})"),
+            "xwind": f"{baan_voor(richting, mws) if baan_voor(richting, mws) != 'variabel/licht' else '05'} · {rnd(mxm)} ({rnd(mxg) if mxg is not None else '?'})",
             "max_vlaag": rnd(max(gu)) if gu else None, "max_xvlaag": rnd(max(x for x in xg if x is not None)) if xg else None,
             "laagste_basis_slechtste_model": None if not worst else {"m": r50(worst[0]), "laag_pct": worst[1], "model": MNAAM.get(worst[2], worst[2])},
             "lage_bewolking_bereik": [min(low), max(low)] if low else None,
