@@ -3,20 +3,20 @@
   {
    "datum": "2026-11-07",
    "dag": "za 7 nov",
-   "update": "vooraf",
-   "zonOp": "07:44",
-   "zonOnder": "17:04",
+   "update": "avond",
+   "zonOp": "07:43",
+   "zonOnder": "17:06",
    "baan": "05",
-   "synoptisch": "Morgenmiddag ligt het hogedrukgebied (ongeveer 1030 hPa) boven Duitsland en Polen, met een zwakkere uitloper boven de Noordzee. Een lagedrukgebied van ongeveer 995 hPa met fronten blijft ver ten westen van Ierland en Frankrijk. Boven België een vochtige, stilstaande lucht onder de inversie: mist en laag grijs dek, droog.",
-   "kort": "Zoals in het vooruitzicht: geen zweefvliegweer. Mist tot ongeveer 10 u, daarna een laag grijs dek tussen 50 en 300 m de hele dag, met kans op lichte motregen. Geen thermiek; het lage dek is de beperkende factor.",
+   "synoptisch": "Morgenmiddag ligt een hogedrukgebied van ongeveer 1030 hPa boven Duitsland en Polen; een lagedrukgebied van ongeveer 995 hPa met fronten blijft ver ten westen van Ierland en Frankrijk. Boven België blijft vochtige, stilstaande lucht onder een inversie hangen: mist en laag grijs dek, droog.",
+   "kort": "Geen wijziging sinds vanochtend: geen zweefvliegweer. Mist tot ongeveer 10 u, daarna een laag grijs dek tussen 50 en 300 m tot zonsondergang (17:06), in de ochtend met kans op lichte motregen. Geen thermiek; het lage dek is de beperkende factor.",
    "blokken": [
     {
      "blok": "09–11",
-     "basis": "mist, dek op 0–50 m",
-     "zicht": "0,8 km (mist)",
+     "basis": "mist, dek op 50–100 m",
+     "zicht": "1,2 km (mist)",
      "wind": "variabel/licht (5)",
-     "xwind": "05 · 1 (4)",
-     "regen": "droog",
+     "xwind": "05 · 2 (4)",
+     "regen": "droog, kans op lichte motregen",
      "thermiek": "geen",
      "sleep": {
       "van": "rood"
@@ -24,10 +24,10 @@
     },
     {
      "blok": "11–13",
-     "basis": "50 → 250 m, gesloten dek",
-     "zicht": "2,1 km (nevel)",
-     "wind": "variabel/licht (6)",
-     "xwind": "05 · 1 (3)",
+     "basis": "50 → 200 m, gesloten dek",
+     "zicht": "2,6 km (nevel)",
+     "wind": "variabel/licht (5)",
+     "xwind": "05 · 2 (4)",
      "regen": "droog, kans op lichte motregen",
      "thermiek": "geen",
      "sleep": {
@@ -36,22 +36,22 @@
     },
     {
      "blok": "13–15",
-     "basis": "150 → 300 m, zwaar bewolkt",
-     "zicht": "5,1 km",
+     "basis": "100 → 300 m, zwaar bewolkt",
+     "zicht": "4,6 km",
      "wind": "variabel/licht (6)",
-     "xwind": "05 · 1 (3)",
-     "regen": "droog, kans op lichte motregen",
+     "xwind": "05 · 1 (5)",
+     "regen": "droog",
      "thermiek": "geen",
      "sleep": {
       "van": "rood"
      }
     },
     {
-     "blok": "15–17:04",
+     "blok": "15–17:06",
      "basis": "100 → 300 m, zwaar bewolkt",
      "zicht": "5,4 km",
-     "wind": "variabel/licht (6)",
-     "xwind": "05 · 1 (2)",
+     "wind": "variabel/licht (7)",
+     "xwind": "05 · 2 (5)",
      "regen": "droog, plaatselijk wat motregen",
      "thermiek": "geen",
      "sleep": {
@@ -60,33 +60,33 @@
     }
    ],
    "meteo": {
-    "temp": "max 8 °C (rond 12 u), ochtendminimum 0,9 °C",
-    "dauwpunt": "1–7 °C",
-    "kritisch": "14 °C — wordt niet gehaald (max 8 °C), geen thermiek",
+    "temp": "max 9 °C (rond 14 u), ochtendminimum 2,7 °C",
+    "dauwpunt": "3–6 °C",
+    "kritisch": "15 °C — wordt niet gehaald (max 9 °C), geen thermiek",
     "vriesniveau": "1800 m",
     "qnh": "1023 hPa, stabiel"
    },
-   "modellen": "De modellen zijn het eens over mist in de ochtend en een laag grijs dek de rest van de dag; ze verschillen alleen in de hoogte (50–400 m). Eén model klaart rond de middag tijdelijk op, maar zakt na 15 u ook terug naar 300 m. De luchthavenverwachtingen geven kans op mist tot 11 u, een dek op 100–250 m en lichte motregen. Slechtste scenario: de hele dag een gesloten dek rond 50–150 m.",
+   "modellen": "Twee rekenmodellen beschikbaar; beide geven mist tot ongeveer 10 u en daarna een laag grijs dek. Het ene houdt het dek de hele dag rond 100–150 m, het andere tilt het na 13 u op tot ongeveer 300 m. De luchthavenverwachtingen geven ook nevel of mist in de ochtend, een dek op 150–250 m (tijdelijk 120 m) met kans op lichte motregen tot 14 u; rond Brussel mogelijk opklaring na 16 u. Slechtste scenario: de hele dag een gesloten dek rond 50–150 m.",
    "overland": {
     "kleur": "rood",
     "tekst": "Geen overland: laag grijs dek en koele, stabiele lucht; de thermiek komt niet boven nul.",
     "venster": "geen",
-    "netto": "≤ 0 m/s (hooguit −0,2 m/s)",
+    "netto": "≤ 0 m/s (hooguit −0,5 m/s rond 12 u)",
     "werkhoogte": "hooguit 300 m (wolkendek)",
     "type": "geen thermiek, laag wolkendek",
     "uitspreiding": "hoog: de hele dag laag dek",
     "buien": "geen",
-    "bovenbewolking": "middelhoge bewolking na de middag",
-    "windHoogte": "west-noordwest 5 kt, later west 8 kt"
+    "bovenbewolking": "middelhoge en hoge bewolking",
+    "windHoogte": "noordwest 7 kt, later west-noordwest 8 kt"
    },
    "bijzonderheden": [
-    "Mist tot ongeveer 10 u, zicht 0,8 km.",
+    "Mist tot ongeveer 10 u, zicht 1,2 km.",
     "Laag grijs dek de hele dag, basis 50–300 m.",
-    "Kans (40 %) op lichte motregen vanaf de middag.",
-    "Rijp op de vleugels mogelijk: ochtendminimum 0,9 °C."
+    "Kans (40 %) op lichte motregen tussen ongeveer 7 en 14 u.",
+    "Wind de hele dag zwak en wisselend; baan 05."
    ],
-   "bronnen": "Briefing dag ervoor · METAR Antwerpen 0650Z, Brussel 0650Z, Eindhoven 0655Z · TAF Antwerpen 060500Z, Brussel 060500Z, Eindhoven 060505Z · Open-Meteo ok (modelvergelijking ok, ensemble niet nodig) · MET Norway updated_at 2026-11-06T05:19:09Z · DWD MOSMIX uitgifte 06-11 03 UTC · BLIPMAP NL4KMGFS Produced on 06 Nov 2026 05:07 CET, NL4KMICON Produced on 06 Nov 2026 06:15 CET · DWD bodemanalyse vr 6 nov 00 UTC, DWD ICON-verwachting za 7 nov 12 UTC (+36 u).",
-   "gemaakt": "2026-11-06T08:18:36+01:00"
+   "bronnen": "Avondbriefing · METAR Antwerpen 1650Z, Brussel 1650Z, Eindhoven 1655Z · TAF Antwerpen 061400Z, Brussel 061100Z, Eindhoven 061354Z (gecorrigeerd) · Open-Meteo: daglimiet bereikt (modelvergelijking en ensemble niet beschikbaar) · MET Norway updated_at 2026-11-06T13:19:43Z · DWD MOSMIX uitgifte 06-11 15 UTC · DWD ICON-D2 hoogte run 06-11 12 UTC · BLIPMAP NL4KMGFS Produced on 06 Nov 2026 16:55 CET, NL4KMICON Produced on 06 Nov 2026 17:36 CET · DWD bodemanalyse vr 6 nov 12 UTC, DWD ICON-verwachting za 7 nov 12 UTC (+36 u) en zo 8 nov 12 UTC (+60 u).",
+   "gemaakt": "2026-11-06T18:25:00+01:00"
   },
   {
    "datum": "2026-11-06",

@@ -1,33 +1,18 @@
 {
- "gemaakt": "2026-11-05T18:18:05+01:00",
+ "gemaakt": "2026-11-06T18:25:00+01:00",
  "dagen": [
-  {
-   "datum": "2026-11-07",
-   "dag": "za 7 nov",
-   "kleur": "rood",
-   "zekerheid": "hoog (modellen en varianten eens, 2 dagen vooruit)",
-   "tekst": "Mist in de ochtend en daarna een laag grijs dek tot op de grond in beide modellen; slechtste scenario de hele dag mist of laag dek. 9 op 10 varianten houden een laag grijs dek vast en alle varianten geven ochtendmist.",
-   "wind": "zuid-zuidwest 3 kt, vlagen 7 kt",
-   "baan": "23",
-   "neerslag": "droog",
-   "bewolking": "laag grijs dek (74–86 %), ochtendmist",
-   "thermiek": "geen",
-   "temp": "max 7–9 °C, ochtendminimum 2,1 °C",
-   "kansen": "laag dek 90 % · regen 0 % · vlagen > 20 kt 0 % · zijwind > 12 kt 0 % · ochtendmist 100 %"
-  },
   {
    "datum": "2026-11-08",
    "dag": "zo 8 nov",
-   "kleur": "groen",
-   "zekerheid": "laag (modellen oneens over het lage dek, 3 dagen vooruit)",
-   "tekst": "Droog met weinig wind; beperkende factor is lage bewolking: de modellen geven nog veel laag dek met een basis van 150–400 m, slechtste scenario een dek rond 150 m. Slechts 3 op 10 varianten houden een laag dek vast, de helft geeft ochtendmist.",
-   "wind": "zuid 5 kt, vlagen 9 kt, zijwind in vlagen 9 kt",
+   "kleur": "oranje",
+   "zekerheid": "matig (modellen eens over mist en laag dek, oneens over hoeveel; 2 dagen vooruit)",
+   "tekst": "Waarschijnlijk weinig zweefvliegweer: mist in de ochtend en daarna veel lage bewolking met basis rond 150–200 m. Slechtste scenario: de hele dag een laag grijs dek.",
+   "wind": "zuid 5–6 kt, vlagen 10 kt",
    "baan": "23",
    "neerslag": "droog",
-   "bewolking": "wisselend laag dek (64–75 %), basis 150–400 m",
+   "bewolking": "veel lage bewolking (62–95 %), basis 150–200 m; mist in de ochtend",
    "thermiek": "geen",
-   "temp": "max 8–9 °C",
-   "kansen": "laag dek 30 % · regen 0 % · vlagen > 20 kt 0 % · zijwind > 12 kt 0 % · ochtendmist 50 %"
+   "temp": "max 9–10 °C"
   }
  ]
 }
