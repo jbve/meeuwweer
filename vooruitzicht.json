@@ -1,4 +1,19 @@
 {
- "gemaakt": "2026-11-07T18:17:27+01:00",
- "dagen": []
+ "gemaakt": "2026-11-08T18:20:00+01:00",
+ "dagen": [
+  {
+   "datum": "2026-11-11",
+   "dag": "wo 11 nov",
+   "kleur": "rood",
+   "zekerheid": "laag (modellen eens over grijs weer, maar regen nog onzeker; 3 dagen vooruit)",
+   "tekst": "Grijze, natte feestdag: alle modellen houden een gesloten laag dek met mist of wolken tot op de grond vast, en de meeste geven ook regen. 9 op 10 varianten houden een laag grijs dek vast, 6 op 10 geven regen.",
+   "wind": "zwak, noord-noordoost 3–5 kt, vlagen tot 12 kt",
+   "baan": "05",
+   "neerslag": "0,3–4,9 mm, regenkans 60 %",
+   "bewolking": "gesloten laag dek, basis 0–50 m, ochtendmist",
+   "thermiek": "geen",
+   "temp": "max 9–12 °C",
+   "kansen": "laag dek 90 % · regen 60 % · vlagen > 20 kt 0 % · zijwind > 12 kt 0 % · ochtendmist 50 %"
+  }
+ ]
 }
