@@ -3,20 +3,20 @@
   {
    "datum": "2026-11-11",
    "dag": "wo 11 nov",
-   "update": "avond",
+   "update": "ochtend",
    "zonOp": "07:51",
    "zonOnder": "16:58",
    "baan": "05",
-   "synoptisch": "Een zwakke hogedrukrug ligt nog over de Benelux, terwijl een lagedrukgebied van 980 hPa ten westen van Ierland naar de Golf van Biskaje zakt (woensdagmiddag 985 hPa). Een warmtefront schuift over Noord-Frankrijk naar België. Met een zwakke noordoostelijke stroming komt vochtige lucht over Zoersel: grijs, een zeer laag wolkendek en motregen of regen.",
-   "kort": "Geen wijziging sinds vanochtend: geen zweefvliegweer. De hele dag een gesloten wolkendek op 0–50 m met motregen of regen, 's ochtends ook mist (zicht tot 1,3 km). Beperkende factor: het zeer lage wolkendek.",
+   "synoptisch": "Een lagedrukgebied van ongeveer 990 hPa ligt ten westen van de Golf van Biskaje; zijn warmtefront ligt van Bretagne over Noord-Frankrijk en het zuiden van België naar Duitsland. Boven de Benelux is de druk vlak (rond 1005 hPa) met een zwakke noordoostelijke stroming, en de vochtige lucht ten noorden van het front geeft over Zoersel de hele dag grijs weer, een zeer laag wolkendek en motregen.",
+   "kort": "Geen wijziging sinds gisteravond: geen zweefvliegweer. Alle waarnemingen tonen een dek rond 100 m met motregen, in Brussel zelfs mist (zicht 800 m), en de modellen houden het dek de hele dag op 0–50 m. Beperkende factor: het zeer lage wolkendek.",
    "blokken": [
     {
      "blok": "09–11",
-     "basis": "50 m, gesloten dek / mist",
-     "zicht": "1,3 km",
-     "wind": "040°/5 (8)",
-     "xwind": "05 · 0 (1)",
-     "regen": "motregen/regen, kans tot 88 %",
+     "basis": "0–50 m, gesloten dek / mist (waarnemingen rond 100 m)",
+     "zicht": "1,0 km",
+     "wind": "050°/4 (9)",
+     "xwind": "05 · 1 (1)",
+     "regen": "motregen, kans tot 73 %",
      "thermiek": "geen",
      "sleep": {
       "van": "rood"
@@ -25,10 +25,10 @@
     {
      "blok": "11–13",
      "basis": "0–50 m, gesloten dek",
-     "zicht": "1,8 km",
-     "wind": "040°/4 (7)",
-     "xwind": "05 · 1 (2)",
-     "regen": "motregen/regen, kans tot 90 %",
+     "zicht": "1,5 km",
+     "wind": "040°/4 (9)",
+     "xwind": "05 · 0 (1)",
+     "regen": "motregen/regen, kans tot 65 %",
      "thermiek": "geen",
      "sleep": {
       "van": "rood"
@@ -37,10 +37,10 @@
     {
      "blok": "13–15",
      "basis": "0–50 m, gesloten dek",
-     "zicht": "2,8 km",
-     "wind": "030°/4 (7)",
+     "zicht": "2,4 km",
+     "wind": "040°/4 (8)",
      "xwind": "05 · 1 (2)",
-     "regen": "regen, kans tot 90 %",
+     "regen": "motregen/regen, kans tot 69 %",
      "thermiek": "geen",
      "sleep": {
       "van": "rood"
@@ -49,10 +49,10 @@
     {
      "blok": "15–16:58",
      "basis": "0–50 m, gesloten dek",
-     "zicht": "2,1 km",
-     "wind": "030°/4 (6)",
-     "xwind": "05 · 1 (3)",
-     "regen": "lichte regen, kans tot 89 %",
+     "zicht": "2,3 km",
+     "wind": "030°/4 (7)",
+     "xwind": "05 · 1 (2)",
+     "regen": "lichte regen, kans tot 71 %",
      "thermiek": "geen",
      "sleep": {
       "van": "rood"
@@ -60,24 +60,24 @@
     }
    ],
    "meteo": {
-    "temp": "max 5 °C (rond 13 u)",
-    "dauwpunt": "4 °C, verschil met temperatuur blijft < 2 °C",
+    "temp": "max 5 °C (rond 9 u)",
+    "dauwpunt": "4–4 °C, verschil met temperatuur blijft < 2 °C",
     "kritisch": "17 °C — wordt niet gehaald (max 5 °C), geen thermiek",
-    "vriesniveau": "2600 m",
-    "qnh": "1002 hPa, stabiel"
+    "vriesniveau": "2500 m",
+    "qnh": "1003 hPa, stabiel"
    },
-   "modellen": "Alle bronnen zijn het eens: een gesloten laag wolkendek op 0–50 m en de hele dag motregen of regen (tot 2,9 mm per blok). Slechtste scenario: mist tot ongeveer 10 u en een dek tot op de grond. De luchthavenverwachtingen geven ook motregen en mist met een dek rond 30–250 m; Eindhoven meldt vanavond al mist met een dek op 60 m.",
+   "modellen": "Alle bronnen zijn het eens: een gesloten wolkendek op 0–50 m en de hele dag motregen of lichte regen. De waarnemingen bevestigen dat: Antwerpen dek op 100 m en zicht 3,5 km, Eindhoven dek op 100 m en zicht 1,9 km, Brussel mist met zicht 800 m. Slechtste scenario: mist tot rond 10 u met een dek tot op de grond. Alleen Eindhoven verwacht na 16–18 u wat opklaring tot een dek rond 350 m, te laat voor vandaag.",
    "overland": {
     "kleur": "rood",
-    "tekst": "Geen thermiek: stabiele, vochtige lucht onder een gesloten laag dek, nauwelijks zon en de grenslaag komt niet boven 250 m."
+    "tekst": "Geen thermiek: stabiele, vochtige lucht onder een gesloten laag dek, hooguit een kwart zon en de grenslaag komt niet boven 200 m."
    },
    "bijzonderheden": [
-    "Mist tot ongeveer 10 u, zicht tot 1,3 km (kans op dichtere mist met zicht 700 m).",
-    "Laag wolkendek (0–50 m) de hele dag.",
-    "Motregen en regen de hele dag."
+    "Mist in de ochtend, zicht tot 1,0 km (Brussel meldt 800 m); de luchthavenverwachtingen geven kans op mist met zicht 400 m tot de middag.",
+    "Laag wolkendek (0–100 m) de hele dag.",
+    "Motregen en lichte regen de hele dag."
    ],
-   "bronnen": "Waarnemingen Antwerpen en Brussel 16:50 UTC, Eindhoven 16:55 UTC (10 nov); TAF Antwerpen 14:00 UTC, Brussel 11:00 UTC, Eindhoven 16:59 UTC (AMD); Open-Meteo ok (modelvergelijking: daglimiet); MET Norway updated_at 2026-11-10T16:45:47Z; DWD MOSMIX Antwerpen-Deurne 15 UTC; BLIPMAP GFS produced on 09 Nov 2026 05:21 CET, BLIPMAP ICON produced on 10 Nov 2026 17:36 CET; DWD-analyse 10 nov 12 UTC, DWD-verwachting VT wo 11 nov 12 UTC (run 10 nov 00 UTC +36 h).",
-   "gemaakt": "2026-11-10T18:17:09+01:00"
+   "bronnen": "Waarnemingen Antwerpen en Brussel 06:50 UTC, Eindhoven 06:55 UTC (11 nov); TAF Antwerpen 05:00 UTC, Brussel 05:00 UTC, Eindhoven 05:22 UTC; Open-Meteo ok (alle modellen); MET Norway updated_at 2026-11-11T05:19:29Z; DWD MOSMIX Antwerpen-Deurne 03 UTC; BLIPMAP GFS produced on 11 Nov 2026 04:56 CET, BLIPMAP ICON produced on 10 Nov 2026 17:36 CET; DWD-analyse 11 nov 00 UTC.",
+   "gemaakt": "2026-11-11T08:17:37+01:00"
   },
   {
    "datum": "2026-11-08",
