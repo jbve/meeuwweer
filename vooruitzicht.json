@@ -1,4 +1,33 @@
 {
- "gemaakt": "2026-11-10T18:17:09+01:00",
- "dagen": []
+ "gemaakt": "2026-11-11T18:16:33+01:00",
+ "dagen": [
+  {
+   "datum": "2026-11-14",
+   "dag": "za 14 nov",
+   "kleur": "groen",
+   "zekerheid": "hoog (modellen en varianten grotendeels eens, 3 dagen vooruit)",
+   "tekst": "Rustig, droog en weinig wind; beperkende factor is ochtendmist (9 op 10 varianten), in het slechtste geval met een wolkenbasis rond 50 m tot de mist oplost. Daarna goed zweefvliegweer voor lokale vluchten.",
+   "wind": "zuid tot zuid-zuidoost, 3–4 kt, vlagen tot 11 kt",
+   "baan": "23",
+   "neerslag": "droog",
+   "bewolking": "ochtendmist en plaatselijk laag grijs, daarna overwegend zonnig",
+   "thermiek": "geen",
+   "temp": "max 6–8 °C, ochtendminimum rond −1 tot 2 °C (kans op rijp)",
+   "kansen": "laag dek 20 % · regen 0 % · vlagen > 20 kt 0 % · zijwind > 12 kt 0 % · ochtendmist 90 %"
+  },
+  {
+   "datum": "2026-11-15",
+   "dag": "zo 15 nov",
+   "kleur": "oranje",
+   "zekerheid": "laag (varianten sterk verdeeld, 4 dagen vooruit)",
+   "tekst": "Zuidelijke stroming wakkert aan met veel laag grijs; beperkende factoren zijn het lage dek (6 op 10 varianten) en de vlagen. Slechtste scenario: gesloten dek rond 100–150 m, vlagen tot 25 kt, zijwind in vlagen tot 19 kt en wat lichte regen (5 op 10 varianten).",
+   "wind": "zuid tot zuid-zuidwest, 7–10 kt, vlagen 14–25 kt, zijwind in vlagen tot 12–19 kt",
+   "baan": "23",
+   "neerslag": "droog tot licht (tot 0,6 mm), regenkans 50 %",
+   "bewolking": "overwegend zwaar bewolkt tot gesloten laag dek, basis 100–300 m",
+   "thermiek": "geen",
+   "temp": "max 8–12 °C, ochtendminimum 0–4 °C",
+   "kansen": "laag dek 60 % · regen 50 % · vlagen > 20 kt 30 % · zijwind > 12 kt 50 % · ochtendmist 10 %"
+  }
+ ]
 }
