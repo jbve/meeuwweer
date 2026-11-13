@@ -1,6 +1,98 @@
 {
  "briefings": [
   {
+   "datum": "2026-11-14",
+   "dag": "za 14 nov",
+   "update": "vooraf",
+   "zonOp": "07:56",
+   "zonOnder": "16:53",
+   "baan": "05",
+   "synoptisch": "Hoge druk (1025 hPa) ligt zaterdag boven Midden-Europa, een lage druk (1005 hPa) bij de Golf van Biskaje met een front boven West-Frankrijk en het Kanaal. Wij zitten aan de hogedrukkant in een zwakke zuidelijke stroming met koude, vochtige lucht; het front bereikt ons pas na zaterdag.",
+   "kort": "Minder gunstig dan het vooruitzicht van gisteravond: de mist blijft, en één model houdt daarna een laag grijs dek vast dat in de namiddag weer dichtgaat. Mist tot ongeveer 10 u, kans op een laag dek rond 100 m tot 12 u; tussen 12 en 13 u het beste venster, daarna marginaal. Geen thermiek; beperkend zijn mist en laag dek.",
+   "blokken": [
+    {
+     "blok": "09–11",
+     "basis": "mist → 50 m half bewolkt, klaart op rond 10 u",
+     "zicht": "1,1 km (mist)",
+     "wind": "variabel/licht (6)",
+     "xwind": "05 · 3 (5)",
+     "regen": "droog",
+     "thermiek": "geen",
+     "sleep": {
+      "van": "rood",
+      "naar": "oranje",
+      "om": "10 u"
+     }
+    },
+    {
+     "blok": "11–13",
+     "basis": "100 m enkele wolken; kans op dek rond 100 m tot 12 u, verder enkele wolken rond 900 m",
+     "zicht": "4,9 km",
+     "wind": "variabel/licht (7)",
+     "xwind": "05 · 3 (7)",
+     "regen": "droog",
+     "thermiek": "geen",
+     "sleep": {
+      "van": "rood",
+      "naar": "groen",
+      "om": "12 u"
+     }
+    },
+    {
+     "blok": "13–15",
+     "basis": "250 m half bewolkt in één model; andere 300–400 m enkele wolken of helder",
+     "zicht": "8,5 km",
+     "wind": "variabel/licht (8)",
+     "xwind": "05 · 4 (8)",
+     "regen": "droog",
+     "thermiek": "geen",
+     "sleep": {
+      "van": "oranje"
+     }
+    },
+    {
+     "blok": "15–16:53",
+     "basis": "150 m zwaar bewolkt in één model; andere 300 m enkele wolken of helder",
+     "zicht": "13,7 km",
+     "wind": "variabel/licht (7)",
+     "xwind": "05 · 3 (7)",
+     "regen": "droog",
+     "thermiek": "geen",
+     "sleep": {
+      "van": "oranje"
+     }
+    }
+   ],
+   "meteo": {
+    "temp": "max 9 °C (rond 14 u)",
+    "dauwpunt": "-2–4 °C",
+    "kritisch": "13 °C — wordt niet gehaald (max 8 °C), geen thermiek",
+    "vriesniveau": "2000 m",
+    "qnh": "1019 hPa, dalend (−4 hPa tot 17 u)"
+   },
+   "modellen": "Alle bronnen droog en windstil, en de meeste geven ochtendmist tot ongeveer 10 u. Eén model houdt na de mist een laag dek tussen 100 en 250 m vast dat na 15 u dichtgaat tot 150 m; de andere bronnen geven enkele wolken op 300–400 m of helder. Daarom staan 13–17 u op oranje in plaats van rood. Slechtste scenario: de hele dag laag grijs, geen zweefvliegweer.",
+   "overland": {
+    "kleur": "rood",
+    "tekst": "Geen thermiek: de gemengde laag komt niet boven 250 m en de kritische temperatuur wordt niet gehaald.",
+    "venster": "geen",
+    "netto": "≤ 0 m/s",
+    "werkhoogte": "250 m",
+    "type": "blauw of laag dek",
+    "uitspreiding": "–",
+    "buien": "geen",
+    "bovenbewolking": "weinig",
+    "windHoogte": "zuidwest 8 kt → zuid 12 kt"
+   },
+   "bijzonderheden": [
+    "Mist tot ongeveer 10 u, zicht tot 1,1 km; vroeg in de ochtend kans op aanvriezende mist.",
+    "Rijp op de vleugels: ochtendminimum −1,7 °C.",
+    "Kans op een laag dek rond 100 m tot 12 u.",
+    "Na 15 u kans op laag grijs dek rond 150 m (één model)."
+   ],
+   "bronnen": "METAR Antwerpen 06:50 UTC, Brussel 06:50 UTC, Eindhoven 06:55 UTC; TAF EBAW 05:00 UTC, EBBR 05:00 UTC, EHEH 05:36 UTC; Open-Meteo ok (best match, ICON-D2, ECMWF IFS, AROME); MET Norway updated_at 2026-11-13T05:20:22Z; DWD MOSMIX Antwerpen-Deurne uitgifte 13 nov 03 UTC; BLIPMAP GFS produced 12 Nov 2026 05:13 CET, BLIPMAP ICON produced 13 Nov 2026 06:22 CET; DWD-analyse 13 nov 00 UTC, DWD-verwachting ICON 13 nov 00 UTC +36 h (za 14 nov 12 UTC).",
+   "gemaakt": "2026-11-13T08:18:17+01:00"
+  },
+  {
    "datum": "2026-11-11",
    "dag": "wo 11 nov",
    "update": "ochtend",
