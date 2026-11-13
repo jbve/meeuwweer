@@ -1,33 +1,19 @@
 {
- "gemaakt": "2026-11-12T18:20:00+01:00",
+ "gemaakt": "2026-11-13T18:35:00+01:00",
  "dagen": [
-  {
-   "datum": "2026-11-14",
-   "dag": "za 14 nov",
-   "kleur": "groen",
-   "zekerheid": "hoog (modellen en alle varianten eens, 2 dagen vooruit)",
-   "tekst": "Droog en windstil met weinig lage bewolking. Beperkende factor is ochtendmist: alle 51 varianten geven mist in de ochtend; slechtste scenario is mist die tot laat in de ochtend blijft hangen.",
-   "wind": "zuidoost tot zuid-zuidoost, 4 kt, vlagen 8 kt",
-   "baan": "05 (zwakke wind, bijna dwars)",
-   "neerslag": "droog",
-   "bewolking": "ochtendmist, daarna weinig lage bewolking (laagste basis 400 m)",
-   "thermiek": "zwak",
-   "temp": "max 6 °C, ochtendminimum -1 °C (rijp mogelijk)",
-   "kansen": "laag dek 0 % · regen 0 % · vlagen > 20 kt 0 % · zijwind > 12 kt 0 % · ochtendmist 100 %"
-  },
   {
    "datum": "2026-11-15",
    "dag": "zo 15 nov",
    "kleur": "rood",
-   "zekerheid": "matig (varianten eens over regen en wind, 3 dagen vooruit)",
-   "tekst": "Regen, laag grijs dek rond 300 m en stevige zuidenwind met zijwind in vlagen tot 15 kt. 8 op 10 varianten geven regen en 7 op 10 houden een laag dek vast.",
-   "wind": "zuid, 12 kt, vlagen 22 kt, zijwind 9 kt (vlagen 15 kt)",
+   "zekerheid": "laag (varianten verdeeld over regen, 2 dagen vooruit)",
+   "tekst": "Laag grijs dek, kans op regen en stevige zuid-zuidwestenwind met zijwind in vlagen boven 12 kt. 9 op 10 varianten geven vlagen boven 20 kt, 8 op 10 houden een laag dek vast; slechtste scenario is een dek rond 100 m met regen.",
+   "wind": "zuid-zuidwest 8–14 kt, vlagen 20–31 kt, zijwind 6–9 kt (vlagen 14–16 kt)",
    "baan": "23",
-   "neerslag": "regen, 1,6–2,5 mm",
-   "bewolking": "laag dek 62–77 %, basis 300 m",
+   "neerslag": "regen mogelijk, 0,3–3,0 mm (kans 50 %)",
+   "bewolking": "laag dek 57–94 %, basis 100–300 m",
    "thermiek": "geen",
-   "temp": "max 10–11 °C, ochtendminimum 2 °C",
-   "kansen": "laag dek 70 % · regen 80 % · vlagen > 20 kt 100 % · zijwind > 12 kt 100 % · ochtendmist 0 %"
+   "temp": "max 10–11 °C, ochtendminimum 0–3 °C",
+   "kansen": "laag dek 80 % · regen 50 % · vlagen > 20 kt 90 % · zijwind > 12 kt 90 % · ochtendmist 0 %"
   }
  ]
 }
