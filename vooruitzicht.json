@@ -1,19 +1,4 @@
 {
- "gemaakt": "2026-11-13T18:35:00+01:00",
- "dagen": [
-  {
-   "datum": "2026-11-15",
-   "dag": "zo 15 nov",
-   "kleur": "rood",
-   "zekerheid": "laag (varianten verdeeld over regen, 2 dagen vooruit)",
-   "tekst": "Laag grijs dek, kans op regen en stevige zuid-zuidwestenwind met zijwind in vlagen boven 12 kt. 9 op 10 varianten geven vlagen boven 20 kt, 8 op 10 houden een laag dek vast; slechtste scenario is een dek rond 100 m met regen.",
-   "wind": "zuid-zuidwest 8–14 kt, vlagen 20–31 kt, zijwind 6–9 kt (vlagen 14–16 kt)",
-   "baan": "23",
-   "neerslag": "regen mogelijk, 0,3–3,0 mm (kans 50 %)",
-   "bewolking": "laag dek 57–94 %, basis 100–300 m",
-   "thermiek": "geen",
-   "temp": "max 10–11 °C, ochtendminimum 0–3 °C",
-   "kansen": "laag dek 80 % · regen 50 % · vlagen > 20 kt 90 % · zijwind > 12 kt 90 % · ochtendmist 0 %"
-  }
- ]
+ "gemaakt": "2026-11-14T18:15:26+01:00",
+ "dagen": []
 }
