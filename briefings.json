@@ -1,22 +1,22 @@
 {
  "briefings": [
   {
-   "datum": "2026-11-14",
-   "dag": "za 14 nov",
-   "update": "avond",
-   "zonOp": "07:56",
-   "zonOnder": "16:53",
+   "datum": "2026-11-15",
+   "dag": "zo 15 nov",
+   "update": "vooraf",
+   "zonOp": "07:58",
+   "zonOnder": "16:52",
    "baan": "23",
-   "synoptisch": "Hoge druk (ongeveer 1020 hPa) boven Engeland schuift zaterdag als een rug over West-Europa; een lagedrukgebied met fronten ligt nog ver op de Atlantische Oceaan. Wij liggen onder de rug met weinig wind en koude, vochtige lucht: na een heldere nacht mist en rijp. Zondag komt een depressie bij Ierland dichterbij met een stevige zuid-zuidwestelijke stroming en fronten vanuit het westen.",
-   "kort": "Iets beter dan vanochtend: het laatste blok (15 u tot zonsondergang) is nu groen, en het lage grijze dek dat één model geeft, lost rond 15 u op in plaats van dan terug te komen. Zweefvliegweer marginaal vanaf 11 u, goed van 15 u tot 16:53. Geen thermiek; beperkend zijn ochtendmist en een mogelijk laag dek tot 15 u.",
+   "synoptisch": "Een depressie ten westen van Ierland en Schotland stuurt een koufront over Ierland en Engeland naar het vasteland; om 12 UTC ligt het nog boven Engeland en de Golf van Biskaje. Wij liggen ervoor in een stevige zuidwestelijke stroming met vochtige, zachtere lucht: laag grijs dek, kans op motregen en harde wind op hoogte. Het front zelf komt pas na zondagmiddag.",
+   "kort": "Zoals in het vooruitzicht: geen zweefvliegweer. Iets minder wind (vlagen tot 22 kt in plaats van tot 31 kt) en minder regen, maar het lage dek (50–350 m) blijft de hele dag. Beperkend is het lage wolkendek, na 13 u ook zijwind in vlagen boven 12 kt.",
    "blokken": [
     {
      "blok": "09–11",
-     "basis": "mist → 50 m zwaar bewolkt, klaart op rond 11 u",
-     "zicht": "3,1 km, plaatselijk mist tot 1,5 km",
-     "wind": "variabel/licht (5)",
-     "xwind": "05 · 3 (4)",
-     "regen": "droog",
+     "basis": "50 → 150 m zwaar bewolkt tot gesloten dek",
+     "zicht": "3,5 km",
+     "wind": "200°/8 (16)",
+     "xwind": "23 · 4 (9)",
+     "regen": "droog, kans op motregen",
      "thermiek": "geen",
      "sleep": {
       "van": "rood"
@@ -24,22 +24,87 @@
     },
     {
      "blok": "11–13",
-     "basis": "100 → 150 m zwaar bewolkt in één model; andere enkele wolken rond 250 m of helder",
-     "zicht": "5,0 km",
-     "wind": "variabel/licht (7)",
-     "xwind": "05 · 4 (6)",
+     "basis": "150 → 300 m zwaar bewolkt tot gesloten dek",
+     "zicht": "9,3 km",
+     "wind": "200°/8 (19)",
+     "xwind": "23 · 5 (10)",
      "regen": "droog",
      "thermiek": "geen",
      "sleep": {
-      "van": "oranje"
+      "van": "rood"
      }
     },
     {
      "blok": "13–15",
-     "basis": "200 → 250 m zwaar bewolkt in één model; andere enkele wolken rond 450 m of helder",
-     "zicht": "9,6 km",
-     "wind": "150°/5 (8)",
-     "xwind": "23 · 5 (8)",
+     "basis": "150 → 350 m zwaar bewolkt tot gesloten dek",
+     "zicht": "7,3 km",
+     "wind": "190°/9 (17)",
+     "xwind": "23 · 6 (12)",
+     "regen": "droog",
+     "thermiek": "geen",
+     "sleep": {
+      "van": "rood"
+     }
+    },
+    {
+     "blok": "15–16:52",
+     "basis": "150 → 300 m gesloten dek",
+     "zicht": "7,3 km",
+     "wind": "190°/10 (19)",
+     "xwind": "23 · 7 (13)",
+     "regen": "lichte regen mogelijk (kans 29 %)",
+     "thermiek": "geen",
+     "sleep": {
+      "van": "rood"
+     }
+    }
+   ],
+   "meteo": {
+    "temp": "max 9 °C (rond 16 u)",
+    "dauwpunt": "3–8 °C, verschil met temperatuur blijft < 2 °C",
+    "kritisch": "15 °C — wordt niet gehaald (max 9 °C), geen thermiek",
+    "vriesniveau": "2100 m",
+    "qnh": "1004 hPa, dalend (−7 hPa tot 17 u)",
+    "waarschuwing": "Harde wind op hoogte: zuidwest 31 → 37 kt, tot 40 kt; vroeg in de ochtend rijp (minimum 0,2 °C)."
+   },
+   "modellen": "Alle bronnen geven de hele dag een laag dek; ze verschillen alleen in de hoogte: 150 m in de slechtste tot 300–400 m in de beste. De luchthavenverwachtingen geven 's ochtends motregen met een dek rond 250–300 m. Slechtste scenario: dek rond 50–150 m met motregen in de ochtend en lichte regen na 15 u.",
+   "overland": {
+    "kleur": "rood",
+    "tekst": "Geen thermiek: laag dek, de kritische temperatuur (15 °C) wordt niet gehaald en de wind op hoogte is te sterk (tot 40 kt).",
+    "venster": "geen",
+    "netto": "≤ 0 m/s",
+    "werkhoogte": "< 300 m",
+    "type": "bewolkt",
+    "uitspreiding": "–",
+    "buien": "geen",
+    "bovenbewolking": "wisselend",
+    "windHoogte": "zuidwest 31 kt → 37 kt, max 40 kt"
+   },
+   "bijzonderheden": [
+    "Laag dek de hele dag, 50–350 m.",
+    "Motregen mogelijk tot ongeveer 11 u, lichte regen na 15 u.",
+    "Vlagen tot 21–22 kt; zijwind in vlagen tot 13–15 kt na 13 u.",
+    "Ochtendmist mogelijk tot 10 u en rijp op de vleugels (minimum 0,2 °C)."
+   ],
+   "bronnen": "METAR Antwerpen 06:50 UTC, Brussel 06:50 UTC, Eindhoven 06:55 UTC; TAF EBAW 05:00 UTC, EBBR 05:00 UTC, EHEH 05:29 UTC; Open-Meteo ok (modelvergelijking ok); MET Norway updated_at 2026-11-14T05:19:36Z; DWD MOSMIX Antwerpen-Deurne uitgifte 14 nov 03 UTC; BLIPMAP GFS produced 11 Nov 2026 05:47 CET (verouderd), BLIPMAP ICON produced 14 Nov 2026 06:18 CET; DWD-analyse 14 nov 00 UTC; DWD-verwachting ICON 14 nov 00 UTC +36 h (VT zo 15 nov 12 UTC).",
+   "gemaakt": "2026-11-14T08:18:31+01:00"
+  },
+  {
+   "datum": "2026-11-14",
+   "dag": "za 14 nov",
+   "update": "ochtend",
+   "zonOp": "07:56",
+   "zonOnder": "16:53",
+   "baan": "05",
+   "synoptisch": "Hoge druk (ongeveer 1020 hPa) ligt boven Zuid-Engeland en het Kanaal, met een tweede hoog boven Centraal-Europa; de depressie (985 hPa) bij IJsland en de fronten op de Atlantische Oceaan blijven ver weg. Wij zitten onder het hoog met nauwelijks wind en koude, vochtige lucht: na een heldere nacht mistbanken en rijp, daarna zonnig.",
+   "kort": "Beter dan gisteravond: het lage grijze dek tussen 11 en 15 u zit niet meer in de verwachting, dus 11 u tot zonsondergang is nu groen. Nu ondiepe mistbanken (zicht 3,8–6 km, geen wolken) met kans op mist of een dek rond 100 m tot 11 u. Zweefvliegweer van 11 u tot 16:53; geen thermiek, beperkend zijn ochtendmist en rijp.",
+   "blokken": [
+    {
+     "blok": "09–11",
+     "basis": "mistbanken → helder; kans op zwaar bewolkt rond 100 m tot 11 u",
+     "zicht": "3,8–6 km met mistbanken (slechtste model 0,9 km)",
+     "wind": "variabel/licht (5)",
+     "xwind": "05 · 3 (5)",
      "regen": "droog",
      "thermiek": "geen",
      "sleep": {
@@ -47,11 +112,35 @@
      }
     },
     {
+     "blok": "11–13",
+     "basis": "helder; in één model enkele wolken rond 100 m",
+     "zicht": "6,5 km",
+     "wind": "variabel/licht (7)",
+     "xwind": "05 · 3 (7)",
+     "regen": "droog",
+     "thermiek": "geen",
+     "sleep": {
+      "van": "groen"
+     }
+    },
+    {
+     "blok": "13–15",
+     "basis": "helder tot enkele wolken rond 250 m",
+     "zicht": "10,5 km",
+     "wind": "variabel/licht (9)",
+     "xwind": "05 · 4 (8)",
+     "regen": "droog",
+     "thermiek": "geen",
+     "sleep": {
+      "van": "groen"
+     }
+    },
+    {
      "blok": "15–16:53",
-     "basis": "hooguit enkele wolken",
-     "zicht": "13,9 km",
+     "basis": "helder",
+     "zicht": "13,6 km",
      "wind": "variabel/licht (8)",
-     "xwind": "05 · 3 (8)",
+     "xwind": "05 · 3 (7)",
      "regen": "droog",
      "thermiek": "geen",
      "sleep": {
@@ -60,34 +149,33 @@
     }
    ],
    "meteo": {
-    "temp": "max 9 °C (rond 15 u)",
-    "dauwpunt": "-1–3 °C",
-    "kritisch": "13 °C — wordt niet gehaald (max 9 °C), geen thermiek",
-    "vriesniveau": "2100 m",
+    "temp": "max 8 °C (rond 15 u)",
+    "dauwpunt": "-2–3 °C",
+    "kritisch": "13 °C — wordt niet gehaald (max 8 °C), geen thermiek",
+    "vriesniveau": "2200 m",
     "qnh": "1019 hPa, dalend (−4 hPa tot 17 u)",
-    "waarschuwing": "Ochtendmist en rijp (minimum −1,1 °C): vleugels en kap ijsvrij maken."
+    "waarschuwing": "Ochtendmist en rijp (minimum −1,2 °C): vleugels en kap ijsvrij maken."
    },
-   "modellen": "Alle bronnen droog met zwakke wind, en de meeste geven ochtendmist tot ongeveer 10 u; de luchthavenverwachtingen houden mist en kans op een dek rond 90 m tot 11 u. Eén model houdt daarna tot 15 u een laag grijs dek tussen 100 en 250 m vast; de andere bronnen (en de hoogtekaarten met volle zon) geven enkele wolken of helder. Daarom staan 11–15 u op oranje in plaats van rood. Slechtste scenario: grijs tot 15 u, dan pas een kort venster.",
+   "modellen": "Alle bronnen droog met zwakke wind. Eén model houdt tot 10 u mist met een dek tot op de grond; de waarnemingen zijn beter (geen wolken, zicht 3,8–6 km met ondiepe mistbanken), maar de luchthavenverwachtingen houden tot 11 u kans op mist en een dek rond 100 m. Daarna geeft één model nog enkele lage wolken (100–250 m), de rest helder. Slechtste scenario: mist en een laag dek tot 11 u.",
    "overland": {
     "kleur": "rood",
-    "tekst": "Geen thermiek: de kritische temperatuur wordt niet gehaald en het stijgen blijft net onder de zinkwaarde, ondanks volle zon.",
+    "tekst": "Geen thermiek: de kritische temperatuur (13 °C) wordt niet gehaald en het stijgen blijft onder de zinkwaarde, ondanks volle zon.",
     "venster": "geen",
     "netto": "≤ 0 m/s (−0,1)",
-    "werkhoogte": "ca. 400 m",
+    "werkhoogte": "ca. 300 m",
     "type": "blauw",
     "uitspreiding": "–",
     "buien": "geen",
     "bovenbewolking": "geen",
-    "windHoogte": "zuid-zuidwest 10 kt → zuid 12 kt"
+    "windHoogte": "zuid-zuidwest 9 kt → zuid 12 kt"
    },
    "bijzonderheden": [
-    "Ochtendmist tot ongeveer 10–11 u, zicht plaatselijk tot 1,5 km; kans op een dek rond 90 m tot 11 u.",
-    "Rijp op de vleugels: ochtendminimum −1,1 °C.",
-    "Tot 15 u kans op een laag grijs dek tussen 100 en 250 m (één model).",
-    "Rond 13–15 u wind uit 150°, dicht bij 140°: zwak, baan 23; daarbuiten variabel."
+    "Ondiepe mist en mistbanken tot ongeveer 10 u (zicht nu 3,8–6 km); kans op mist of een dek rond 100 m tot 11 u.",
+    "Rijp op de vleugels: ochtendminimum −1,2 °C.",
+    "Zwakke, wisselende wind uit zuid tot zuidoost, soms dicht bij 140°: baan 05 of 23 kiezen volgens de wind ter plaatse."
    ],
-   "bronnen": "METAR Antwerpen 16:50 UTC, Brussel 16:50 UTC, Eindhoven 16:55 UTC; TAF EBAW 14:00 UTC, EBBR 11:00 UTC, EHEH 11:17 UTC; Open-Meteo ok (modelvergelijking: daglimiet), ensemble ok; MET Norway updated_at 2026-11-13T13:19:40Z; DWD MOSMIX Antwerpen-Deurne uitgifte 13 nov 15 UTC; BLIPMAP GFS produced 13 Nov 2026 16:55 CET, BLIPMAP ICON produced 13 Nov 2026 17:35 CET; DWD-analyse 13 nov 12 UTC, DWD-verwachting ICON 13 nov 00 UTC +36 h (za 14 nov 12 UTC) en +60 h (zo 15 nov 12 UTC).",
-   "gemaakt": "2026-11-13T18:35:00+01:00"
+   "bronnen": "METAR Antwerpen 06:50 UTC, Brussel 06:50 UTC, Eindhoven 06:55 UTC; TAF EBAW 05:00 UTC, EBBR 05:00 UTC, EHEH 05:29 UTC; Open-Meteo ok (modelvergelijking ok); MET Norway updated_at 2026-11-14T05:19:36Z; DWD MOSMIX Antwerpen-Deurne uitgifte 14 nov 03 UTC; BLIPMAP GFS produced 14 Nov 2026 04:55 CET, BLIPMAP ICON produced 14 Nov 2026 05:59 CET; DWD-analyse 14 nov 00 UTC.",
+   "gemaakt": "2026-11-14T08:18:31+01:00"
   },
   {
    "datum": "2026-11-11",
