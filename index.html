@@ -150,6 +150,9 @@ h1 .dagcheck.rood { background: var(--red); }
 .state { padding: 28px 20px; text-align: center; color: var(--muted); }
 .state strong { display: block; color: var(--fg); font-family: var(--font-display); font-size: 22px; letter-spacing: .02em; margin-bottom: 4px; }
 .note { font-size: 13px; color: var(--amber); }
+.pauze { margin-top: 16px; padding: 14px 16px; border-left: 4px solid var(--amber); background: var(--amber-bg); }
+.pauze strong { display: block; font-family: var(--font-display); font-weight: 700; font-size: 20px; letter-spacing: .04em; text-transform: uppercase; color: var(--amber); }
+.pauze p { margin: 2px 0 0; }
 </style>
 
 <div class="wrap">
@@ -160,6 +163,8 @@ h1 .dagcheck.rood { background: var(--red); }
     </div>
     <div class="facts" id="facts"></div>
   </header>
+
+  <div class="panel pauze" id="pauze" role="status" hidden><strong>Briefing gepauzeerd</strong><p id="pauzeTekst"></p></div>
 
   <nav class="dagtabs" id="dagtabs" aria-label="Kies de dag" hidden></nav>
 
@@ -295,7 +300,7 @@ h1 .dagcheck.rood { background: var(--red); }
       $("title").textContent = "Meeuw Weerbriefing";
       main.appendChild(el("div", { class: "panel state" }, [
         el("strong", { text: "Geen briefing voor vandaag" }),
-        "De volgende briefing verschijnt de dag voor de volgende vliegdag rond 08:15."
+        pauze ? "Tijdens de pauze verschijnen er geen nieuwe briefings. Kies hieronder een vorige briefing." : "De volgende briefing verschijnt de dag voor de volgende vliegdag rond 08:15."
       ]));
       historyList(null);
       dagTabs(null);
@@ -424,7 +429,7 @@ h1 .dagcheck.rood { background: var(--red); }
     const uurNu = Number(nu.toLocaleString("en-GB", { hour: "2-digit", minute: "2-digit", hour12: false, timeZone: "Europe/Brussels" }).replace(":", "."));
     const volgende = uurNu < 18.15 ? "vandaag rond 18:15" : "morgen rond 18:15";
     $("outlookNote").textContent = "Grove verwachting, nog niet betrouwbaar genoeg om op te plannen: hoe verder vooruit, hoe onzekerder. De volledige briefing verschijnt de dag ervoor rond 08:15.";
-    $("outlookUpd").textContent = "Bijgewerkt " + (tijd || "–") + " · volgende update " + volgende;
+    $("outlookUpd").textContent = "Bijgewerkt " + (tijd || "–") + (pauze ? " · updates gepauzeerd" : " · volgende update " + volgende);
     $("outlook").hidden = false;
   }
 
@@ -436,7 +441,22 @@ h1 .dagcheck.rood { background: var(--red); }
     } catch (e) {}
   }
 
+  let pauze = false;
+  async function loadStatus() {
+    try {
+      const res = await fetch("status.json", { cache: "no-store" });
+      if (!res.ok) return;
+      const st = await res.json();
+      if (st && st.pauze) {
+        pauze = true;
+        $("pauzeTekst").textContent = st.tekst || "Er verschijnen voorlopig geen nieuwe briefings. Hieronder staan de laatste briefings als archief.";
+        $("pauze").hidden = false;
+      }
+    } catch (e) {}
+  }
+
   async function start() {
+    await loadStatus();
     try {
       const res = await fetch("briefings.json", { cache: "no-store" });
       if (!res.ok) throw new Error(String(res.status));
