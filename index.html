@@ -164,7 +164,7 @@ h1 .dagcheck.rood { background: var(--red); }
     <div class="facts" id="facts"></div>
   </header>
 
-  <div class="panel pauze" id="pauze" role="status" hidden><strong>Briefing gepauzeerd</strong><p id="pauzeTekst"></p></div>
+  <div class="panel pauze" id="pauze" role="status" hidden><strong id="pauzeTitel">Briefing gepauzeerd</strong><p id="pauzeTekst"></p></div>
 
   <nav class="dagtabs" id="dagtabs" aria-label="Kies de dag" hidden></nav>
 
@@ -300,7 +300,7 @@ h1 .dagcheck.rood { background: var(--red); }
       $("title").textContent = "Meeuw Weerbriefing";
       main.appendChild(el("div", { class: "panel state" }, [
         el("strong", { text: "Geen briefing voor vandaag" }),
-        pauze ? "Tijdens de pauze verschijnen er geen nieuwe briefings. Kies hieronder een vorige briefing." : "De volgende briefing verschijnt de dag voor de volgende vliegdag rond 08:15."
+        pauze ? "Er verschijnen voorlopig geen nieuwe briefings. Kies hieronder een vorige briefing." : "De volgende briefing verschijnt de dag voor de volgende vliegdag rond 08:15."
       ]));
       historyList(null);
       dagTabs(null);
@@ -449,6 +449,7 @@ h1 .dagcheck.rood { background: var(--red); }
       const st = await res.json();
       if (st && st.pauze) {
         pauze = true;
+        if (st.titel) $("pauzeTitel").textContent = st.titel;
         $("pauzeTekst").textContent = st.tekst || "Er verschijnen voorlopig geen nieuwe briefings. Hieronder staan de laatste briefings als archief.";
         $("pauze").hidden = false;
       }
